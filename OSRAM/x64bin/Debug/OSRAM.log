@@ -1,0 +1,42 @@
+﻿Shaders.obj : error LNK2001: unresolved external symbol __imp___glewAttachShader
+Shaders.obj : error LNK2001: unresolved external symbol __imp___glewCompileShader
+Shaders.obj : error LNK2001: unresolved external symbol __imp___glewCreateProgram
+Shaders.obj : error LNK2001: unresolved external symbol __imp___glewCreateShader
+Shaders.obj : error LNK2001: unresolved external symbol __imp___glewDeleteProgram
+Shaders.obj : error LNK2001: unresolved external symbol __imp___glewDeleteShader
+Shaders.obj : error LNK2001: unresolved external symbol __imp___glewGetProgramInfoLog
+Shaders.obj : error LNK2001: unresolved external symbol __imp___glewGetProgramiv
+Shaders.obj : error LNK2001: unresolved external symbol __imp___glewGetShaderInfoLog
+Shaders.obj : error LNK2001: unresolved external symbol __imp___glewGetShaderiv
+Shaders.obj : error LNK2001: unresolved external symbol __imp___glewLinkProgram
+Shaders.obj : error LNK2001: unresolved external symbol __imp___glewShaderSource
+Shaders.obj : error LNK2001: unresolved external symbol __imp___glewUseProgram
+Input.obj : error LNK2019: unresolved external symbol glfwSetKeyCallback referenced in function "public: __cdecl OSRAM::INPUT::Input::Input(struct GLFWwindow *)" (??0Input@INPUT@OSRAM@@QEAA@PEAUGLFWwindow@@@Z)
+Input.obj : error LNK2019: unresolved external symbol glfwSetMouseButtonCallback referenced in function "public: __cdecl OSRAM::INPUT::Input::Input(struct GLFWwindow *)" (??0Input@INPUT@OSRAM@@QEAA@PEAUGLFWwindow@@@Z)
+Input.obj : error LNK2019: unresolved external symbol glfwSetCursorPosCallback referenced in function "public: __cdecl OSRAM::INPUT::Input::Input(struct GLFWwindow *)" (??0Input@INPUT@OSRAM@@QEAA@PEAUGLFWwindow@@@Z)
+Input.obj : error LNK2019: unresolved external symbol glfwSetCursorEnterCallback referenced in function "public: __cdecl OSRAM::INPUT::Input::Input(struct GLFWwindow *)" (??0Input@INPUT@OSRAM@@QEAA@PEAUGLFWwindow@@@Z)
+main.obj : error LNK2019: unresolved external symbol __imp_glDrawBuffer referenced in function main
+main.obj : error LNK2019: unresolved external symbol glfwWindowShouldClose referenced in function main
+main.obj : error LNK2001: unresolved external symbol __imp___glewBindBuffer
+main.obj : error LNK2001: unresolved external symbol __imp___glewBufferData
+main.obj : error LNK2001: unresolved external symbol __imp___glewGenBuffers
+main.obj : error LNK2001: unresolved external symbol __imp___glewEnableVertexAttribArray
+main.obj : error LNK2001: unresolved external symbol __imp___glewVertexAttribPointer
+main.obj : error LNK2001: unresolved external symbol __imp___glewBindVertexArray
+main.obj : error LNK2001: unresolved external symbol __imp___glewGenVertexArrays
+Window.obj : error LNK2019: unresolved external symbol __imp_glViewport referenced in function "private: void __cdecl OSRAM::GRAPHICS::Window::init(void)" (?init@Window@GRAPHICS@OSRAM@@AEAAXXZ)
+Window.obj : error LNK2019: unresolved external symbol __imp_glewInit referenced in function "private: void __cdecl OSRAM::GRAPHICS::Window::init(void)" (?init@Window@GRAPHICS@OSRAM@@AEAAXXZ)
+Window.obj : error LNK2019: unresolved external symbol glfwInit referenced in function "private: void __cdecl OSRAM::GRAPHICS::Window::init(void)" (?init@Window@GRAPHICS@OSRAM@@AEAAXXZ)
+Window.obj : error LNK2019: unresolved external symbol glfwTerminate referenced in function "public: __cdecl OSRAM::GRAPHICS::Window::~Window(void)" (??1Window@GRAPHICS@OSRAM@@QEAA@XZ)
+Window.obj : error LNK2019: unresolved external symbol glfwWindowHint referenced in function "private: void __cdecl OSRAM::GRAPHICS::Window::init(void)" (?init@Window@GRAPHICS@OSRAM@@AEAAXXZ)
+Window.obj : error LNK2019: unresolved external symbol glfwCreateWindow referenced in function "private: void __cdecl OSRAM::GRAPHICS::Window::init(void)" (?init@Window@GRAPHICS@OSRAM@@AEAAXXZ)
+Window.obj : error LNK2019: unresolved external symbol glfwShowWindow referenced in function "private: void __cdecl OSRAM::GRAPHICS::Window::init(void)" (?init@Window@GRAPHICS@OSRAM@@AEAAXXZ)
+Window.obj : error LNK2019: unresolved external symbol glfwPollEvents referenced in function "public: void __cdecl OSRAM::GRAPHICS::Window::Update(void)" (?Update@Window@GRAPHICS@OSRAM@@QEAAXXZ)
+Window.obj : error LNK2019: unresolved external symbol glfwMakeContextCurrent referenced in function "private: void __cdecl OSRAM::GRAPHICS::Window::init(void)" (?init@Window@GRAPHICS@OSRAM@@AEAAXXZ)
+Window.obj : error LNK2019: unresolved external symbol glfwSwapBuffers referenced in function "public: void __cdecl OSRAM::GRAPHICS::Window::Update(void)" (?Update@Window@GRAPHICS@OSRAM@@QEAAXXZ)
+Window.obj : error LNK2019: unresolved external symbol glfwSwapInterval referenced in function "private: void __cdecl OSRAM::GRAPHICS::Window::init(void)" (?init@Window@GRAPHICS@OSRAM@@AEAAXXZ)
+E:\Projects\OSRAM\OpenGL\lib\glfw3.lib : warning LNK4272: library machine type 'X86' conflicts with target machine type 'x64'
+E:\Projects\OSRAM\OpenGL\lib\glfw3dll.lib : warning LNK4272: library machine type 'X86' conflicts with target machine type 'x64'
+E:\Projects\OSRAM\OpenGL\lib\glew32.lib : warning LNK4272: library machine type 'X86' conflicts with target machine type 'x64'
+E:\Projects\OSRAM\OpenGL\lib\opengl32.lib : warning LNK4272: library machine type 'X86' conflicts with target machine type 'x64'
+E:\Projects\OSRAM\x64\Debug\OSRAM.exe : fatal error LNK1120: 37 unresolved externals

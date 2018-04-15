@@ -16,7 +16,7 @@ namespace OSRAM
 
 			bool inited = false;
 		public:
-			Input(GLFWwindow* window);
+			Input(GLFWwindow* window, int cursor_mode);
 			~Input();
 
 			bool isKeyPressed(int key) { return m_keys[key]; }

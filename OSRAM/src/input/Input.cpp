@@ -1,7 +1,7 @@
 #include "Input.h"
 
 OSRAM::INPUT::Input *input;
-OSRAM::INPUT::Input::Input(GLFWwindow* window)
+OSRAM::INPUT::Input::Input(GLFWwindow* window, int cursor)
 {
 	input = this;
 	for (int i = 0; i < 1024; i++)
@@ -20,6 +20,7 @@ OSRAM::INPUT::Input::Input(GLFWwindow* window)
 	glfwSetCursorEnterCallback(window, cursor_enter_callback);
 
 	inited = true;
+	glfwSetInputMode(window, GLFW_CURSOR, cursor);
 	std::cout << "[INPUT] Initiated Input Class . . . " << std::endl;
 }
 

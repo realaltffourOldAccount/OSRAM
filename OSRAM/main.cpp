@@ -3,45 +3,48 @@
 #include "src/graphics/Shaders.h"
 #include <iostream>
 
+
+void draw_vbo()
+{
+	GLuint vbo, ibo;
+	GLfloat verts[] = {
+		0.0f, 0.0f,
+		0.5f, 0.0f,
+		0.0f, 0.5f,
+	};
+	GLubyte ind[8] = { 0,1,2 };
+
+	glGenBuffers(1, &vbo);
+	glGenBuffers(1, &ibo);
+
+	glBindBuffer(GL_ARRAY_BUFFER, vbo);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibo);
+
+	glBufferData(GL_ARRAY_BUFFER, 24 * sizeof(GLfloat), verts, GL_STATIC_DRAW);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, 3 * sizeof(GLubyte), ind,
+		GL_STATIC_DRAW);
+
+	glEnableClientState(GL_VERTEX_ARRAY);
+	glVertexPointer(3, GL_FLOAT, sizeof(GLfloat), 0);
+	glDrawElements(GL_TRIANGLES, 8, GL_UNSIGNED_BYTE, 0);
+	glDisableClientState(GL_VERTEX_ARRAY);
+
+	glDeleteBuffers(1, &vbo);
+	glDeleteBuffers(1, &ibo);
+}
+
 int main()
 {
 	OSRAM::GRAPHICS::Window window(460, 460, "Defualt Title");
-	OSRAM::INPUT::Input input(window.getWindowHandler());
+	OSRAM::INPUT::Input input(window.getWindowHandler(), GLFW_CURSOR_NORMAL);
 	OSRAM::GRAPHICS::Shaders shader;
-	
-	float vertices[] = {
-		0.5f, 0.0f,
-		0.0f, 0.0f,
-		0.0f, 0.5f
-	};
-	unsigned int indices[] = {
-		0,1,2,
-		2,3,1
-	};
-
-	GLuint vbo, vao, ibo;
-	glGenVertexArrays(1, &vao);
-	glGenBuffers(1, &vbo);
-	glGenBuffers(1, &ibo);
-	glBindVertexArray(vao);
-	glBindBuffer(GL_ARRAY_BUFFER, vbo);
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibo);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(vbo), &vertices, GL_STATIC_DRAW);
-	glEnableVertexAttribArray(0);
-	glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 0, 0);
-	glBindBuffer(GL_ARRAY_BUFFER, 0);
-	glBindVertexArray(0);
 
 	shader.UseProgram();
 
 	while (!glfwWindowShouldClose(window.getWindowHandler()))
 	{
 		window.Update();
-		glBindVertexArray(vao);
-		glBindBuffer(GL_ARRAY_BUFFER, vbo);
-		glDrawBuffer(GL_TRIANGLES);
-		glBindBuffer(GL_ARRAY_BUFFER, 0);
-		glBindVertexArray(0);
+		draw_vbo();
 
 	}
 	return 0;
