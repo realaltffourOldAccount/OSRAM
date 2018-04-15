@@ -45,7 +45,6 @@ int main()
 	{
 		window.Update();
 		draw_vbo();
-
 	}
 	return 0;
 }
