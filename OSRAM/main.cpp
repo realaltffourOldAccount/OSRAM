@@ -3,7 +3,6 @@
 #include "src/graphics/Shaders.h"
 #include <iostream>
 
-
 void draw_vbo()
 {
 	GLuint vbo, ibo;
