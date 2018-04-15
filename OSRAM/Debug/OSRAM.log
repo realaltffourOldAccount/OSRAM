@@ -1,4 +1,18 @@
-﻿  main.cpp
+﻿  VBO.cpp
+  Window.cpp
+  main.cpp
 e:\projects\osram\osram\src\utils\fileutils.h(18): warning C4244: 'initializing': conversion from 'std::streamoff' to 'int', possible loss of data
+  Input.cpp
+  Shaders.cpp
+e:\projects\osram\osram\src\utils\fileutils.h(18): warning C4244: 'initializing': conversion from 'std::streamoff' to 'int', possible loss of data
+e:\projects\osram\osram\src\graphics\shaders.cpp(116): warning C4244: 'argument': conversion from 'float' to 'GLint', possible loss of data
+e:\projects\osram\osram\src\graphics\shaders.cpp(128): warning C4244: 'argument': conversion from 'float' to 'GLint', possible loss of data
+e:\projects\osram\osram\src\graphics\shaders.cpp(134): warning C4305: 'argument': truncation from 'int' to 'GLboolean'
+e:\projects\osram\osram\src\graphics\shaders.cpp(134): warning C4309: 'argument': truncation of constant value
+e:\projects\osram\osram\src\graphics\shaders.cpp(140): warning C4305: 'argument': truncation from 'int' to 'GLboolean'
+e:\projects\osram\osram\src\graphics\shaders.cpp(140): warning C4309: 'argument': truncation of constant value
+  Generating Code...
+  LINK : E:\Projects\OSRAM\\bin\Debug\OSRAM.exe not found or not built by the last incremental link; performing full link
+LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
   OSRAM.vcxproj -> E:\Projects\OSRAM\\bin\Debug\OSRAM.exe
   OSRAM.vcxproj -> E:\Projects\OSRAM\\bin\Debug\OSRAM.pdb (Partial PDB)

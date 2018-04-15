@@ -18,6 +18,16 @@ namespace OSRAM
 			Shaders();
 			~Shaders();
 			void UseProgram();
+
+			void Uniform1f(std::string str, float val);
+			void Uniform1i(std::string str, int val);
+			void Uniform2f(std::string str, float val1, float val2);
+			void Uniform2i(std::string str, int val1, float val2);
+			void Uniform3f(std::string str, float val1, float val2, float val3);
+			void Uniform3i(std::string str, int val1, float val2, float val3);
+			void UnifromMat4(std::string str, glm::mat4 val);
+			void UnifromMat3(std::string str, glm::mat4 val);
+
 		};
 	}
 
