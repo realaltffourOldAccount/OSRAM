@@ -1,4 +1,3 @@
-﻿  main.cpp
-e:\projects\osram\osram\src\utils\fileutils.h(18): warning C4244: 'initializing': conversion from 'std::streamoff' to 'int', possible loss of data
+﻿  VBO.cpp
   OSRAM.vcxproj -> E:\Projects\OSRAM\\bin\Debug\OSRAM.exe
   OSRAM.vcxproj -> E:\Projects\OSRAM\\bin\Debug\OSRAM.pdb (Partial PDB)

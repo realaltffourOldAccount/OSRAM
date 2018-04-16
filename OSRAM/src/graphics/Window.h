@@ -25,6 +25,7 @@ namespace OSRAM {
 			~Window();
 
 			void Update();
+			static void CheckError();
 
 			GLFWwindow* getWindowHandler() { return m_Window; };
 			int getWindowWidth() { return m_Width; };
