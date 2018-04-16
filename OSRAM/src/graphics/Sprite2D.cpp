@@ -28,7 +28,6 @@ namespace OSRAM {
 
 		Spirite2D::~Spirite2D()
 		{
-
 		}
 
 		void Spirite2D::Draw()

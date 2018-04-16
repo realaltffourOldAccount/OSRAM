@@ -12,7 +12,7 @@
 
 void draw_vbo()
 {
-	GLuint vbo, ibo;
+	GLuint ibo;
 	GLubyte ind[8] = { 0,1,2, 3,1,2 };
 
 	glGenBuffers(1, &ibo);
@@ -52,23 +52,25 @@ int main()
 	model = glm::translate(glm::mat4(1.0f), glm::vec3(0.4f, 1.0f,0.0f));
 	glm::mat4 view(1.0f);
 
-
 	OSRAM::GRAPHICS::Spirite2D::DATA data;
 	data._center = glm::vec2(0.0f, 0.0f);
 	data._size = glm::vec2(0.5f, 0.5f);
-	data._color = glm::vec4(0.0f, 0.5f, 0.0f, 0.0f);
+	data._color = glm::vec4(0.0f, 0.2f, 0.3f, 1.0f);
 	OSRAM::GRAPHICS::Spirite2D sprite(data, &shader);
 
 	shader.UseProgram();
-	//shader.UnifromMat4("m_P",  proj, false);
-	//shader.UnifromMat4("m_V", view, false);
-	//shader.UnifromMat4("m_M", model, false);
+	shader.UnifromMat4("m_P",  proj, false);
+	shader.UnifromMat4("m_V", view, false);
+	shader.UnifromMat4("m_M", model, false);
 	while (!glfwWindowShouldClose(window.getWindowHandler()))
 	{
 		window.Update();
 		//vbo.LegacyDraw();
 		vbo.Bind();
 		ibo.Bind();
+
+	
+
 		/*glEnableClientState(GL_VERTEX_ARRAY);
 		glDrawElements(GL_TRIANGLES, 8, GL_UNSIGNED_BYTE, 0);
 		glDisableClientState(GL_VERTEX_ARRAY);*/

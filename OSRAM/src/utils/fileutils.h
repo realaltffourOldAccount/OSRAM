@@ -15,7 +15,7 @@ namespace OSRAM	{
 			if (stream) {
 				// get length of file:
 				stream.seekg(0, stream.end);
-				int length = stream.tellg();
+				int length = (const int)stream.tellg();
 				stream.seekg(0, stream.beg);
 
 				char * buffer = new char[length];

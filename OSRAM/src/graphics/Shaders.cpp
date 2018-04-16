@@ -110,7 +110,7 @@ void OSRAM::GRAPHICS::Shaders::Uniform2f(const char* str, float val1, float val2
 	glUniform2f(location, val1, val2);
 }
 
-void OSRAM::GRAPHICS::Shaders::Uniform2i(const char* str, int val1, float val2)
+void OSRAM::GRAPHICS::Shaders::Uniform2i(const char* str, int val1, int val2)
 {
 	int location = glGetUniformLocation(m_Program, str);
 	glUniform2i(location, val1, val2);
@@ -122,7 +122,7 @@ void OSRAM::GRAPHICS::Shaders::Uniform3f(const char* str, float val1, float val2
 	glUniform3f(location, val1, val2, val3);
 }
 
-void OSRAM::GRAPHICS::Shaders::Uniform3i(const char* str, int val1, float val2, float val3)
+void OSRAM::GRAPHICS::Shaders::Uniform3i(const char* str, int val1, int val2, int val3)
 {
 	int location = glGetUniformLocation(m_Program, str);
 	glUniform3i(location, val1, val2, val3);
@@ -134,7 +134,7 @@ void OSRAM::GRAPHICS::Shaders::Uniform4f(const char* str, float val1, float val2
 	glUniform4f(location, val1, val2, val3, val4);
 }
 
-void OSRAM::GRAPHICS::Shaders::Uniform4i(const char* str, int val1, float val2, float val3, float val4)
+void OSRAM::GRAPHICS::Shaders::Uniform4i(const char* str, int val1, int val2, int val3, int val4)
 {
 	int location = glGetUniformLocation(m_Program, str);
 	glUniform4i(location, val1, val2, val3, val4);
