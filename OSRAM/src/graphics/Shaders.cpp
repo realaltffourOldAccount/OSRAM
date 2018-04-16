@@ -128,6 +128,18 @@ void OSRAM::GRAPHICS::Shaders::Uniform3i(const char* str, int val1, float val2, 
 	glUniform3i(location, val1, val2, val3);
 }
 
+void OSRAM::GRAPHICS::Shaders::Uniform4f(const char* str, float val1, float val2, float val3, float val4)
+{
+	int location = glGetUniformLocation(m_Program, str);
+	glUniform4f(location, val1, val2, val3, val4);
+}
+
+void OSRAM::GRAPHICS::Shaders::Uniform4i(const char* str, int val1, float val2, float val3, float val4)
+{
+	int location = glGetUniformLocation(m_Program, str);
+	glUniform4i(location, val1, val2, val3, val4);
+}
+
 void OSRAM::GRAPHICS::Shaders::UnifromMat3(const char* str, glm::mat4 val, bool transpose)
 {
 	int location = glGetUniformLocation(m_Program, str);
