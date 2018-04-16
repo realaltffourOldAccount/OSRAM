@@ -1,5 +1,6 @@
 ﻿  main.cpp
 e:\projects\osram\osram\src\utils\fileutils.h(18): warning C4244: 'initializing': conversion from 'std::streamoff' to 'int', possible loss of data
-e:\projects\osram\osram\main.cpp(13): warning C4101: 'vbo': unreferenced local variable
+e:\projects\osram\osram\main.cpp(14): warning C4101: 'vbo': unreferenced local variable
+LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
   OSRAM.vcxproj -> E:\Projects\OSRAM\\bin\Debug\OSRAM.exe
   OSRAM.vcxproj -> E:\Projects\OSRAM\\bin\Debug\OSRAM.pdb (Partial PDB)
