@@ -68,9 +68,6 @@ int main()
 		//vbo.LegacyDraw();
 		vbo.Bind();
 		ibo.Bind();
-
-	
-
 		/*glEnableClientState(GL_VERTEX_ARRAY);
 		glDrawElements(GL_TRIANGLES, 8, GL_UNSIGNED_BYTE, 0);
 		glDisableClientState(GL_VERTEX_ARRAY);*/
