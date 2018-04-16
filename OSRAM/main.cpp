@@ -40,7 +40,7 @@ int main()
 	OSRAM::GRAPHICS::Window window(460, 460, "Defualt Title");
 	OSRAM::INPUT::Input input(window.getWindowHandler(), GLFW_CURSOR_NORMAL);
 	OSRAM::GRAPHICS::Shaders shader;
-	OSRAM::GRAPHICS::BUFFER::VBO vbo(vert, 8);
+	OSRAM::GRAPHICS::BUFFER::VBO vbo(vert, 8, 2);
 	OSRAM::GRAPHICS::BUFFER::IBO ibo(ind, 6);
 	
 	shader.UseProgram();

@@ -12,7 +12,7 @@ namespace OSRAM
 			class VBO
 			{
 			public:
-				VBO(GLfloat *vertices, int count);
+				VBO(GLfloat *vertices, int count, int stride);
 				~VBO();
 
 				void Bind();

@@ -1,7 +1,7 @@
 #include "VBO.h"
 #include "../Window.h"
 
-OSRAM::GRAPHICS::BUFFER::VBO::VBO(GLfloat *vertices, int count)
+OSRAM::GRAPHICS::BUFFER::VBO::VBO(GLfloat *vertices, int count, int stride)
 {
 	m_verticesCount = count;
 	m_Vertices = new float[count];
@@ -11,14 +11,12 @@ OSRAM::GRAPHICS::BUFFER::VBO::VBO(GLfloat *vertices, int count)
 		m_Vertices[i] = vertices[i];
 	}
 
-	std::cout << m_Vertices[2] << std::endl;
-
 	glGenBuffers(1, &m_VBOid);
 
 	glBindBuffer(GL_ARRAY_BUFFER, m_VBOid);
 	glBufferData(GL_ARRAY_BUFFER, count * sizeof(GLfloat), m_Vertices, GL_STATIC_DRAW);
 	glEnableVertexAttribArray(0);
-	glVertexAttribPointer(0, 2, GL_FLOAT, 0, 0, 0);
+	glVertexAttribPointer(0, 2, GL_FLOAT, 0, sizeof(GL_FLOAT)*stride, 0);
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 
 	OSRAM::GRAPHICS::Window::CheckError();
