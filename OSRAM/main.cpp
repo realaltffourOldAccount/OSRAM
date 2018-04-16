@@ -4,6 +4,8 @@
 #include "src/graphics/buffer/VBO.h"
 #include "src/graphics/buffer/IBO.h"
 
+#include <GLM/gtc/matrix_transform.hpp>
+#include <GLM/mat4x4.hpp>
 #include <iostream>
 
 void draw_vbo()
@@ -42,11 +44,17 @@ int main()
 	OSRAM::GRAPHICS::Shaders shader;
 	OSRAM::GRAPHICS::BUFFER::VBO vbo(vert, 8, 2);
 	OSRAM::GRAPHICS::BUFFER::IBO ibo(ind, 6);
-	
+	glm::mat4 proj = glm::ortho(-6.0f, 6.0f, -3.0f, 3.0f, -1.0f, 1.0f);
+	glm::mat4 model(1.0f);
+	model = glm::translate(glm::mat4(1.0f), glm::vec3(0.4f, 1.0f,0.0f));
+	glm::mat4 view(1.0f);
+
 	shader.UseProgram();
+	shader.UnifromMat4("m_P",  proj, false);
+	shader.UnifromMat4("m_V", view, false);
+	shader.UnifromMat4("m_M", model, false);
 	while (!glfwWindowShouldClose(window.getWindowHandler()))
 	{
-		
 		window.Update();
 		//vbo.LegacyDraw();
 		vbo.Bind();

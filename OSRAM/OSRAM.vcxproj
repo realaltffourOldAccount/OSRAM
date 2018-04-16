@@ -146,7 +146,6 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="src\graphics\Window.cpp" />
     <ClCompile Include="src\graphics\buffer\VBO.cpp" />
-    <ClCompile Include="src\graphics\buffer\VOA.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\graphics\buffer\IBO.h" />
@@ -155,7 +154,6 @@
     <ClInclude Include="src\graphics\Window.h" />
     <ClInclude Include="src\utils\fileutils.h" />
     <ClInclude Include="src\graphics\buffer\VBO.h" />
-    <ClInclude Include="src\graphics\buffer\VOA.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="src\shaders\basic_fs.glsl" />
