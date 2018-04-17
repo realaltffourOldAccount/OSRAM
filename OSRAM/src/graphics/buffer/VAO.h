@@ -10,8 +10,8 @@ namespace OSRAM {
 			{
 			public:
 				enum buffer_layout_type {
-					TYPE_FLOAT,
-					TYPE_INT
+					TYPE_FLOAT = 0x1406,
+					TYPE_INT = 0x1404
 				};
 				struct buffer_layout 
 				{

@@ -40,12 +40,8 @@ void OSRAM::GRAPHICS::Window::Update()
 {
 	glfwPollEvents();
 	glfwSwapBuffers(m_Window);
-
-	// check OpenGL error
-	GLenum err;
-	while ((err = glGetError()) != GL_NO_ERROR) {
-		std::cerr << "OpenGL error: " << err << std::endl;
-	}
+	glClear(GL_COLOR_BUFFER_BIT);
+	///this->CheckError();
 }
 
 void OSRAM::GRAPHICS::Window::CheckError()

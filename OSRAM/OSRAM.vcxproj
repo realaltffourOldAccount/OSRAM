@@ -148,6 +148,7 @@
     <ClCompile Include="src\graphics\Window.cpp" />
     <ClCompile Include="src\graphics\buffer\VBO.cpp" />
     <ClCompile Include="src\graphics\buffer\VAO.cpp" />
+    <ClCompile Include="src\utils\stbi_image.h" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\graphics\Spirite2D.h" />

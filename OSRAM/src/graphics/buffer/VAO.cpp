@@ -11,17 +11,8 @@ OSRAM::GRAPHICS::BUFFER::VAO::VAO(BUFFER::VBO vbo, buffer_layout layout)
 
 	this->Bind();
 	m_VBO->Bind();
-
-	if (layout._type == TYPE_FLOAT)
-	{
-		glEnableVertexAttribArray(0);
-		glVertexAttribPointer(0, layout._vertex_components, GL_FLOAT, 0, 0, NULL);
-	}
-	else if (layout._type == TYPE_INT)
-	{
-		glEnableVertexAttribArray(0);
-		glVertexAttribPointer(0, layout._vertex_components, GL_INT, 0, 0, NULL);
-	}
+	glEnableVertexAttribArray(0);
+	glVertexAttribPointer(0, layout._vertex_components, layout._type, 0, 0, NULL);
 
 	this->unBind();
 	m_VBO->unBind();
