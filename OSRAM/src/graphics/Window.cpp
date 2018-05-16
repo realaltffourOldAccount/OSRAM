@@ -24,8 +24,8 @@ void OSRAM::GRAPHICS::Window::init()
 								m_Width,
 								m_Title.c_str(),
 								NULL,NULL);
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 2);
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 1);
 	glfwMakeContextCurrent(m_Window);
 	if (glewInit() != GLEW_OK)
 		std::cout << "[WINDOW] GLEW Init UnSuccessfull . . . " << std::endl;

@@ -62,13 +62,13 @@ namespace OSRAM {
 		{
 			m_VAO->Bind();
 			m_IBO->Bind();
-			if (m_Data._texturefile != "")
-			{
-				glBindTexture(GL_TEXTURE_2D, m_Texture);
-				glActiveTexture(GL_TEXTURE0);
-				glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
-				glEnableVertexAttribArray(2);
-			}
+			//if (m_Data._texturefile != "")
+			//{
+			//	glBindTexture(GL_TEXTURE_2D, m_Texture);
+			//	glActiveTexture(GL_TEXTURE0);
+			//	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
+			//	glEnableVertexAttribArray(2);
+			//}
 			m_Shader->Uniform4f("m_Color", m_Data._color.x, m_Data._color.y, m_Data._color.z, m_Data._color.w);
 			glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_BYTE, nullptr);
 			m_IBO->UnBind();

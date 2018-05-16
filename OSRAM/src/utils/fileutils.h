@@ -5,34 +5,27 @@
 
 namespace OSRAM	{
 	namespace UTILS {
-		inline std::string read_file(std::string filename) 
+		inline std::string read_file(std::string filename)
 		{
 			std::cout << "[FILE] Reading File : " << filename << std::endl;
-			
-			std::ifstream stream(filename, std::ifstream::in);
-			std::string str;
 
-			if (stream) {
-				// get length of file:
-				stream.seekg(0, stream.end);
-				int length = (const int)stream.tellg();
-				stream.seekg(0, stream.beg);
+			std::ifstream read(filename);
+			std::string str, str1;
 
-				char * buffer = new char[length];
-
-				// read data as a block:
-				stream.read(buffer, length);
-				std::cout << "[FILE] All characters read successfully." << std::endl;
-				stream.close();
-
-				// ...buffer contains the entire file...
-				str = buffer;
-
-
-				delete[] buffer;
+			int index = 0;
+			if (read.is_open())
+			{
+				getline(read, str);
+				while (read)
+				{
+					str1 += str + "\n";
+					getline(read, str);
+				}
+				//cout << str1 << endl;
+				return str1;
 			}
-			std::cout << "[FILE] Successfully Read File: " << filename << std::endl;
-			return str;
+			else
+				std::cout << "[FILE]File Could Not Be Opened . . . " + filename << std::endl;
 		}
 	}
 }

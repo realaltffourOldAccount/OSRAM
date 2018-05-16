@@ -1,0 +1,16 @@
+﻿  IBO.cpp
+  Shaders.cpp
+  Sprite2D.cpp
+  Input.cpp
+src\input\Input.cpp(54): warning C4800: 'int': forcing value to bool 'true' or 'false' (performance warning)
+  main.cpp
+  Window.cpp
+  VBO.cpp
+  VAO.cpp
+  stbi_image.h
+  Generating code
+r:\projects\osram\osram\src\utils\fileutils.h(29): warning C4715: 'OSRAM::UTILS::read_file': not all control paths return a value
+  All 406 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  OSRAM.vcxproj -> R:\Projects\OSRAM\\bin\Release\OSRAM.exe
+  OSRAM.vcxproj -> R:\Projects\OSRAM\\bin\Release\OSRAM.pdb (Full PDB)
