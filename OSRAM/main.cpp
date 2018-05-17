@@ -5,6 +5,7 @@
 #include "src/graphics/buffer/IBO.h"
 #include "src/graphics/buffer/VAO.h"
 #include "src/graphics/Spirite2D.h"
+#include "src/graphics/Sprite2DTex.h"
 
 #include <GLM/gtc/matrix_transform.hpp>
 #include <GLM/mat4x4.hpp>
@@ -55,32 +56,38 @@ int main()
 	//OSRAM::GRAPHICS::BUFFER::VBO vbo(vert, 8, 2);
 	//OSRAM::GRAPHICS::BUFFER::IBO ibo(ind, 6);
 	
-	//glm::mat4 proj(1.0f);
-	//glm::mat4 model(1.0f);
-	//glm::mat4 view(1.0f);
-	////view = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, -0.4f, 0.3f));
+	glm::mat4 proj(1.0f);
+	glm::mat4 model(1.0f);
+	glm::mat4 view(1.0f);
+	//view = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, -0.4f, 0.3f));
 	////view = glm::rotate(glm::mat4(1.0f), glm::radians(25.0f), glm::vec3(0.0f, 0.0f, 1.0f));
 
-	//OSRAM::GRAPHICS::Spirite2D::DATA data;
-	//data._center = glm::vec2(0.0f, 0.0f);
-	//data._size = glm::vec2(0.5f, 0.5f);
-	//data._color = glm::vec4(0.0f, 0.2f, 0.3f, 1.0f);
-	////data._texturefile = "texture.jpg";
-	//OSRAM::GRAPHICS::Spirite2D sprite(data, &shader);
+	OSRAM::GRAPHICS::Spirite2D::DATA data;
+	data._center = glm::vec2(0.0f, 0.0f);
+	data._size = glm::vec2(0.5f, 0.5f);
+	data._color = glm::vec4(0.0f, 0.2f, 0.3f, 1.0f);
+	//data._texturefile = "texture.jpg";
+	OSRAM::GRAPHICS::Spirite2D sprite(data, &shader);
+
+	OSRAM::GRAPHICS::Sprite2DTex::DATA tex_data;
+	tex_data._center = glm::vec2(0.0f,0.0f);
+	tex_data._color_adj = glm::vec4(1);
+	tex_data._size = glm::vec2(0.5f, 0.5f);
+	tex_data._texture_file = "texture.jpg";
+	OSRAM::GRAPHICS::Sprite2DTex tex_sprite(tex_data, &shader);
 
 	shader.UseBasicProgram();
-	shader.Uniform4f("m_Color", 0.2f, 0.3f, 0.5f, 1.0f);
+	//shader.Uniform4f(shader.GetBasicProgram(),"m_Color", 0.2f, 0.3f, 0.5f, 1.0f);
 	//glClearColor(0.03f, 0.0f, 0.0f, 1.0f);
 
-//  glEnable(GL_BLEND);
-//	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-
-
+    glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 	while (!glfwWindowShouldClose(window.getWindowHandler()))
 	{
 		window.Update();
-		draw_vbo();
+		//tex_sprite.LegacyDraw();
+		sprite.LegacyDraw();
 	}
 	return 0;
 }

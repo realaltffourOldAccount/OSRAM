@@ -3,14 +3,13 @@ r:\projects\osram\osram\debug\vc140.idb
 r:\projects\osram\osram\debug\ibo.obj
 r:\projects\osram\osram\debug\shaders.obj
 r:\projects\osram\osram\debug\sprite2d.obj
+r:\projects\osram\osram\debug\sprite2dtex.obj
 r:\projects\osram\osram\debug\input.obj
 r:\projects\osram\osram\debug\main.obj
 r:\projects\osram\osram\debug\window.obj
 r:\projects\osram\osram\debug\vbo.obj
 r:\projects\osram\osram\debug\vao.obj
 r:\projects\osram\osram\debug\stbi_image.obj
-r:\projects\osram\osram\debug\vc141.idb
-r:\projects\osram\osram\debug\vc141.pdb
 r:\projects\osram\\bin\debug\osram.pdb
 r:\projects\osram\osram\debug\osram.tlog\cl.command.1.tlog
 r:\projects\osram\osram\debug\osram.tlog\cl.read.1.tlog

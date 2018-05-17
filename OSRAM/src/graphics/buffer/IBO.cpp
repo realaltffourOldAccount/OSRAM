@@ -26,7 +26,7 @@ void OSRAM::GRAPHICS::BUFFER::IBO::Bind()
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_IBOid);
 }
 
-void OSRAM::GRAPHICS::BUFFER::IBO::UnBind()
+void OSRAM::GRAPHICS::BUFFER::IBO::unBind()
 {
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 }

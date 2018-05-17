@@ -15,7 +15,7 @@ namespace OSRAM {
 				~IBO();
 
 				void Bind();
-				void UnBind();
+				void unBind();
 
 			};
 		}

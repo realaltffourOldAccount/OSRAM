@@ -25,7 +25,7 @@ namespace OSRAM
 				std::string _texture_file = " ";
 			};
 
-			Sprite2DTex(DATA* data, Shaders* shaders);
+			Sprite2DTex(DATA data, Shaders* shaders);
 			~Sprite2DTex();
 
 			void LegacyDraw();
@@ -44,6 +44,9 @@ namespace OSRAM
 			int m_nrChannels;
 			unsigned char* m_TexData;
 			
+			void BindTexture();
+			void unBindTexture();
+
 		};
 	}
 }

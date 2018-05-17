@@ -9,13 +9,19 @@ namespace OSRAM {
 			class VAO
 			{
 			public:
-				enum buffer_layout_type {
-					TYPE_FLOAT = 0x1406,
-					TYPE_INT = 0x1404
+				struct buffer_vertices_layout_type {
+					int TYPE_FLOAT = 0x1406;
+					int TYPE_INT = 0x1404;
+
+				};
+				struct buffer_color_layout_type {
+					int TYPE_FLOAT = 0x1406;
+					int TYPE_INT = 0x1404;
 				};
 				struct buffer_layout 
 				{
-					buffer_layout_type _type;
+					buffer_vertices_layout_type _vertices_layout;
+					buffer_color_layout_type _color_layout;
 					int _vertex_components = 0;
 				};
 			public:

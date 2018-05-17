@@ -166,71 +166,69 @@ OSRAM::GRAPHICS::Shaders::~Shaders()
 void OSRAM::GRAPHICS::Shaders::UseBasicProgram()
 {
 	glUseProgram(m_BasicProgram);
-	m_CurrentProgram = m_BasicProgram;
 }
 
 void OSRAM::GRAPHICS::Shaders::UseTextureProgram()
 {
 	glUseProgram(m_TextureProgram);
-	m_CurrentProgram = m_TextureProgram;
 }
 
-void OSRAM::GRAPHICS::Shaders::Uniform1f(const char* str, float val)
+void OSRAM::GRAPHICS::Shaders::Uniform1f(unsigned int program, const char* str, float val)
 {
-	int location = glGetUniformLocation(m_CurrentProgram, str);
+	int location = glGetUniformLocation(program, str);
 	glUniform1f(location, val);
 }
 
-void OSRAM::GRAPHICS::Shaders::Uniform1i(const char* str, int val)
+void OSRAM::GRAPHICS::Shaders::Uniform1i(unsigned int program, const char* str, int val)
 {
-	int location = glGetUniformLocation(m_CurrentProgram, str);
+	int location = glGetUniformLocation(program, str);
 	glUniform1i(location, val);
 }
 
-void OSRAM::GRAPHICS::Shaders::Uniform2f(const char* str, float val1, float val2)
+void OSRAM::GRAPHICS::Shaders::Uniform2f(unsigned int program, const char* str, float val1, float val2)
 {
-	int location = glGetUniformLocation(m_CurrentProgram, str);
+	int location = glGetUniformLocation(program, str);
 	glUniform2f(location, val1, val2);
 }
 
-void OSRAM::GRAPHICS::Shaders::Uniform2i(const char* str, int val1, int val2)
+void OSRAM::GRAPHICS::Shaders::Uniform2i(unsigned int program, const char* str, int val1, int val2)
 {
-	int location = glGetUniformLocation(m_CurrentProgram, str);
+	int location = glGetUniformLocation(program, str);
 	glUniform2i(location, val1, val2);
 }
 
-void OSRAM::GRAPHICS::Shaders::Uniform3f(const char* str, float val1, float val2, float val3)
+void OSRAM::GRAPHICS::Shaders::Uniform3f(unsigned int program, const char* str, float val1, float val2, float val3)
 {
-	int location = glGetUniformLocation(m_CurrentProgram, str);
+	int location = glGetUniformLocation(program, str);
 	glUniform3f(location, val1, val2, val3);
 }
 
-void OSRAM::GRAPHICS::Shaders::Uniform3i(const char* str, int val1, int val2, int val3)
+void OSRAM::GRAPHICS::Shaders::Uniform3i(unsigned int program, const char* str, int val1, int val2, int val3)
 {
-	int location = glGetUniformLocation(m_CurrentProgram, str);
+	int location = glGetUniformLocation(program, str);
 	glUniform3i(location, val1, val2, val3);
 }
 
-void OSRAM::GRAPHICS::Shaders::Uniform4f(const char* str, float val1, float val2, float val3, float val4)
+void OSRAM::GRAPHICS::Shaders::Uniform4f(unsigned int program, const char* str, float val1, float val2, float val3, float val4)
 {
-	int location = glGetUniformLocation(m_CurrentProgram, str);
+	int location = glGetUniformLocation(program, str);
 	glUniform4f(location, val1, val2, val3, val4);
 }
 
-void OSRAM::GRAPHICS::Shaders::Uniform4i(const char* str, int val1, int val2, int val3, int val4)
+void OSRAM::GRAPHICS::Shaders::Uniform4i(unsigned int program, const char* str, int val1, int val2, int val3, int val4)
 {
-	int location = glGetUniformLocation(m_CurrentProgram, str);
+	int location = glGetUniformLocation(program, str);
 	glUniform4i(location, val1, val2, val3, val4);
 }
 
-void OSRAM::GRAPHICS::Shaders::UnifromMat3(const char* str, glm::mat4 val, bool transpose)
+void OSRAM::GRAPHICS::Shaders::UnifromMat3(unsigned int program, const char* str, glm::mat4 val, bool transpose)
 {
-	int location = glGetUniformLocation(m_CurrentProgram, str);
+	int location = glGetUniformLocation(program, str);
 	glUniformMatrix3fv(location, 1, transpose, &val[0][0]);
 }
 
-void OSRAM::GRAPHICS::Shaders::UnifromMat4(const char* str, glm::mat4 val, bool transpose)
+void OSRAM::GRAPHICS::Shaders::UnifromMat4(unsigned int program, const char* str, glm::mat4 val, bool transpose)
 {
-	int location = glGetUniformLocation(m_CurrentProgram, str);
+	int location = glGetUniformLocation(program, str);
 	glUniformMatrix4fv(location, 1, transpose, &val[0][0]);
 }

@@ -36,9 +36,9 @@ namespace OSRAM {
 		{
 			m_VAO->Bind();
 			m_IBO->Bind();
-			m_Shader->Uniform4f("m_Color", m_Data._color.x, m_Data._color.y, m_Data._color.z, m_Data._color.w);
+			//m_Shader->Uniform4f("m_Color", m_Data._color.x, m_Data._color.y, m_Data._color.z, m_Data._color.w);
 			glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_BYTE, nullptr);
-			m_IBO->UnBind();
+			m_IBO->unBind();
 			m_VAO->unBind();
 		}
 	}
