@@ -1,3 +1,4 @@
 ﻿  main.cpp
+r:\projects\osram\osram\src\graphics\shaders.h(26): warning C4800: 'unsigned int': forcing value to bool 'true' or 'false' (performance warning)
   OSRAM.vcxproj -> R:\Projects\OSRAM\\bin\Debug\OSRAM.exe
   OSRAM.vcxproj -> R:\Projects\OSRAM\\bin\Debug\OSRAM.pdb (Partial PDB)

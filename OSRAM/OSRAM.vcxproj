@@ -144,6 +144,7 @@
     <ClCompile Include="src\graphics\buffer\IBO.cpp" />
     <ClCompile Include="src\graphics\Shaders.cpp" />
     <ClCompile Include="src\graphics\Sprite2D.cpp" />
+    <ClCompile Include="src\graphics\Sprite2DTex.cpp" />
     <ClCompile Include="src\input\Input.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="src\graphics\Window.cpp" />
@@ -155,6 +156,7 @@
     <ClInclude Include="src\graphics\Spirite2D.h" />
     <ClInclude Include="src\graphics\buffer\IBO.h" />
     <ClInclude Include="src\graphics\Shaders.h" />
+    <ClInclude Include="src\graphics\Sprite2DTex.h" />
     <ClInclude Include="src\input\Input.h" />
     <ClInclude Include="src\graphics\Window.h" />
     <ClInclude Include="src\utils\fileutils.h" />
@@ -164,6 +166,8 @@
   <ItemGroup>
     <None Include="src\shaders\basic_fs.glsl" />
     <None Include="src\shaders\basic_vs.glsl" />
+    <None Include="src\shaders\tex_fs.glsl" />
+    <None Include="src\shaders\tex_vs.glsl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

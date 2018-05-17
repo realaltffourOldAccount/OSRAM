@@ -68,8 +68,8 @@ int main()
 	////data._texturefile = "texture.jpg";
 	//OSRAM::GRAPHICS::Spirite2D sprite(data, &shader);
 
-	shader.UseProgram();
-	//shader.Uniform4f("m_Color", 0.2f, 0.3f, 0.0f, 1.0f);
+	shader.UseBasicProgram();
+	shader.Uniform4f("m_Color", 0.2f, 0.3f, 0.5f, 1.0f);
 	//glClearColor(0.03f, 0.0f, 0.0f, 1.0f);
 
 //  glEnable(GL_BLEND);

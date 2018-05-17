@@ -42,6 +42,9 @@
     <ClCompile Include="src\utils\stbi_image.h">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\graphics\Sprite2DTex.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\graphics\Window.h">
@@ -68,9 +71,14 @@
     <ClInclude Include="src\graphics\Spirite2D.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\graphics\Sprite2DTex.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="src\shaders\basic_vs.glsl" />
     <None Include="src\shaders\basic_fs.glsl" />
+    <None Include="src\shaders\tex_fs.glsl" />
+    <None Include="src\shaders\tex_vs.glsl" />
   </ItemGroup>
 </Project>
