@@ -34,7 +34,7 @@ namespace OSRAM {
 			
 			GLubyte ind[6] = { 0,1,2, 3,1,2 };
 
-			float acc_speed = 0.01;
+			float acc_speed = 0.01f;
 			float acc_x, acc_y;
 			bool acc_true = false;
 		};

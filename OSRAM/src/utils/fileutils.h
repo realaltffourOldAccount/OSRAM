@@ -27,6 +27,7 @@ namespace OSRAM	{
 			}
 			else
 				std::cout << "[FILE] File Reading: " + filename << " . . . FAIL" << std::endl;
+			return nullptr;
 		}
 	}
 }

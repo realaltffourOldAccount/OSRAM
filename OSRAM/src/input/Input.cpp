@@ -51,5 +51,5 @@ void OSRAM::INPUT::Input::mouse_button_callback(GLFWwindow* window, int button, 
 
 void OSRAM::INPUT::Input::cursor_enter_callback(GLFWwindow* window, int entered)
 {
-	input->m_MouseEnter = entered;
+	input->m_MouseEnter = (bool)entered;
 }

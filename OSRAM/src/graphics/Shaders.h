@@ -20,7 +20,6 @@ namespace OSRAM
 			std::string m_basicFS_Source;
 			std::string m_texVS_Source;
 			std::string m_texFS_Source;
-
 		public:
 			Shaders();
 			~Shaders();

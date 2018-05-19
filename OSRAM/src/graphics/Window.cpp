@@ -44,6 +44,7 @@ void OSRAM::GRAPHICS::Window::init()
 	ImGui_ImplGlfwGL3_Init(m_Window, true);
 	ImGui::StyleColorsDark();
 
+
 }
 
 void OSRAM::GRAPHICS::Window::Update() 

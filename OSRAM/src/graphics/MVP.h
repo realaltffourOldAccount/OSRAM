@@ -5,19 +5,22 @@
 #include <GLM\mat4x4.hpp>
 #include <GLM\gtc\matrix_transform.hpp>
 
-#include "Window.h"
+#include "Shaders.h"
 
 namespace OSRAM {
 	namespace GRAPHICS {
 		class MVP /// MUST BE CREATED ONCE EVERY SHADER CLASS INSTANCE, passed by pionter
 		{
 		public:
-			MVP();
+			MVP(Shaders *shader);
 			~MVP();
 
+			void SetModelMatrix(glm::mat4 mat);
+			void SetViewMatrix(glm::mat4 view);
+			void SetProjectionMatrix(glm::mat4 proj);
 		private:
-
+			
+			Shaders *m_Shader;
 		};
-
 	}
 }

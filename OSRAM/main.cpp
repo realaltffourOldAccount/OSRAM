@@ -5,6 +5,7 @@
 #include "src/graphics/buffer/IBO.h"
 #include "src/graphics/buffer/VAO.h"
 #include "src/graphics/Spirite2D.h"
+#include "src/graphics/MVP.h"
 
 #include <GLM/gtc/matrix_transform.hpp>
 #include <GLM/mat4x4.hpp>
@@ -39,6 +40,7 @@ void draw_vbo()
 	glDeleteBuffers(1, &vbo);
 	glDeleteBuffers(1, &ibo);
 }
+
 int main()
 {
 	GLfloat vert[8] = {
@@ -52,6 +54,7 @@ int main()
 	OSRAM::GRAPHICS::Window window(460, 460, "Defualt Title");
 	OSRAM::INPUT::Input input(window.getWindowHandler(), GLFW_CURSOR_NORMAL);
 	OSRAM::GRAPHICS::Shaders shader;
+	OSRAM::GRAPHICS::MVP mvp(&shader);
 	//OSRAM::GRAPHICS::BUFFER::VBO vbo(vert, 8, 2);
 	//OSRAM::GRAPHICS::BUFFER::IBO ibo(ind, 6);
 	
@@ -59,7 +62,7 @@ int main()
 	glm::mat4 model(1.0f);
 	glm::mat4 view(1.0f);
 	//view = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, -0.4f, 0.3f));
-	////view = glm::rotate(glm::mat4(1.0f), glm::radians(25.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+	view = glm::rotate(glm::mat4(1.0f), glm::radians(25.0f), glm::vec3(0.0f, 0.0f, 1.0f));
 
 	OSRAM::GRAPHICS::Spirite2D::DATA data;
 	data._center = glm::vec2(0.0f, 0.0f);
@@ -74,14 +77,11 @@ int main()
 	//shader.Uniform4f(shader.GetBasicProgram(),"m_Color", 0.2f, 0.3f, 0.5f, 1.0f);
 	//glClearColor(0.03f, 0.0f, 0.0f, 1.0f);
 
-	bool show_demo_window = true;
-	bool show_another_window = false;
-	ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
 	while (!glfwWindowShouldClose(window.getWindowHandler()))
 	{
 		window.Update();
-
 		window.RenderImGUI();
+		mvp.SetViewMatrix(view);
 		sprite.LegacyDraw();
 	}
 	return 0;
