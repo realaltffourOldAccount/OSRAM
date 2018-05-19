@@ -17,8 +17,8 @@ OSRAM::GRAPHICS::Window::~Window()
 void OSRAM::GRAPHICS::Window::init()
 {
 	if (!glfwInit())
-		std::cout << "[WINDOW] GLFW Init UnSuccessfull . . ." << std::endl;
-	else std::cout << "[WINDOW] GLFW Init Successfull . . . " << std::endl;
+		std::cout << "[WINDOW] GLFW Init . . . FAIL" << std::endl;
+	else std::cout << "[WINDOW] GLFW Init . . . SUCCESS" << std::endl;
 
 	m_Window = glfwCreateWindow(m_Height,
 								m_Width,
@@ -28,12 +28,14 @@ void OSRAM::GRAPHICS::Window::init()
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 1);
 	glfwMakeContextCurrent(m_Window);
 	if (glewInit() != GLEW_OK)
-		std::cout << "[WINDOW] GLEW Init UnSuccessfull . . . " << std::endl;
-	else std::cout << "[WINDOW] GLEW Init Successfull . . ." << std::endl;
+		std::cout << "[WINDOW] GLEW Init . . . FAIL" << std::endl;
+	else std::cout << "[WINDOW] GLEW Init . . .SUCCESS" << std::endl;
 
 	glViewport(0, 0, m_Width, m_Height);
 	glfwSwapInterval(0);
 	glfwShowWindow(m_Window);
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 }
 
 void OSRAM::GRAPHICS::Window::Update() 

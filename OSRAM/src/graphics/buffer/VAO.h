@@ -9,23 +9,35 @@ namespace OSRAM {
 			class VAO
 			{
 			public:
-				struct buffer_vertices_layout_type {
-					int TYPE_FLOAT = 0x1406;
-					int TYPE_INT = 0x1404;
+				#define TYPE_FLOAT  0x1406;
+				#define TYPE_INT  0x1404;
 
+				 struct buffer_vertices_data_info {
+					GLenum		  _type;			// type of the values
+					const GLvoid* _offset;			// offset for the first value
+					GLsizei		  _stride;			// byte offset of consecutive generic values attributes
+					GLint		  _components;		// number of components per generic vertix attribute
 				};
-				struct buffer_color_layout_type {
-					int TYPE_FLOAT = 0x1406;
-					int TYPE_INT = 0x1404;
+				 struct buffer_color_data_info {
+					GLenum		  _type;			// type of the values
+					const GLvoid* _offset;			// offset for the first value
+					GLsizei		  _stride;			// byte offset of consecutive generic values attributes
+					GLint		  _components;		// number of components per generic vertix attribute
+				};
+				struct buffer_texCord_data_info {
+					GLenum		  _type;			// type of the values
+					const GLvoid* _offset;			// offset for the first value
+					GLsizei		  _stride;			// byte offset of consecutive generic values attributes
+					GLint		  _components;		// number of components per generic vertix attribute
 				};
 				struct buffer_layout 
 				{
-					buffer_vertices_layout_type _vertices_layout;
-					buffer_color_layout_type _color_layout;
-					int _vertex_components = 0;
+					buffer_vertices_data_info* _vertices_layout;
+					buffer_color_data_info* _color_layout;
+					buffer_texCord_data_info* _texCord_layout;
 				};
 			public:
-				VAO(BUFFER::VBO vbo, buffer_layout layout);
+				VAO(BUFFER::VBO vbo, buffer_layout *layout, bool texture);
 				~VAO();
 				void LegacyDrawBuffer();
 
@@ -35,8 +47,8 @@ namespace OSRAM {
 			private:
 				OSRAM::GRAPHICS::BUFFER::VBO* m_VBO;
 				buffer_layout m_Layout;
-
 				GLuint m_VAOid;
+				bool m_TextureEnabled = false;
 			};
 		}
 	}

@@ -1,19 +1,4 @@
-﻿  VAO.cpp
-r:\projects\osram\osram\src\graphics\buffer\vao.cpp(15): error C2039: '_type': is not a member of 'OSRAM::GRAPHICS::BUFFER::VAO::buffer_layout'
-  r:\projects\osram\osram\src\graphics\buffer\vao.h(22): note: see declaration of 'OSRAM::GRAPHICS::BUFFER::VAO::buffer_layout'
-r:\projects\osram\osram\src\graphics\buffer\vao.cpp(15): error C2198: 'PFNGLVERTEXATTRIBPOINTERPROC': too few arguments for call
-  Sprite2DTex.cpp
-r:\projects\osram\osram\src\graphics\sprite2dtex.cpp(21): error C2039: '_type': is not a member of 'OSRAM::GRAPHICS::BUFFER::VAO::buffer_layout'
-  r:\projects\osram\osram\src\graphics\buffer\vao.h(22): note: see declaration of 'OSRAM::GRAPHICS::BUFFER::VAO::buffer_layout'
-r:\projects\osram\osram\src\graphics\sprite2dtex.cpp(21): error C3083: 'buffer_layout_type': the symbol to the left of a '::' must be a type
-r:\projects\osram\osram\src\graphics\sprite2dtex.cpp(21): error C2039: 'TYPE_FLOAT': is not a member of 'OSRAM::GRAPHICS::BUFFER::VAO'
-  r:\projects\osram\osram\src\graphics\buffer\vao.h(10): note: see declaration of 'OSRAM::GRAPHICS::BUFFER::VAO'
-r:\projects\osram\osram\src\graphics\sprite2dtex.cpp(21): error C2065: 'TYPE_FLOAT': undeclared identifier
-  Sprite2D.cpp
-r:\projects\osram\osram\src\graphics\sprite2d.cpp(23): error C2039: '_type': is not a member of 'OSRAM::GRAPHICS::BUFFER::VAO::buffer_layout'
-  r:\projects\osram\osram\src\graphics\buffer\vao.h(22): note: see declaration of 'OSRAM::GRAPHICS::BUFFER::VAO::buffer_layout'
-r:\projects\osram\osram\src\graphics\sprite2d.cpp(23): error C3083: 'buffer_layout_type': the symbol to the left of a '::' must be a type
-r:\projects\osram\osram\src\graphics\sprite2d.cpp(23): error C2039: 'TYPE_FLOAT': is not a member of 'OSRAM::GRAPHICS::BUFFER::VAO'
-  r:\projects\osram\osram\src\graphics\buffer\vao.h(10): note: see declaration of 'OSRAM::GRAPHICS::BUFFER::VAO'
-r:\projects\osram\osram\src\graphics\sprite2d.cpp(23): error C2065: 'TYPE_FLOAT': undeclared identifier
-  Generating Code...
+﻿  main.cpp
+LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
+  OSRAM.vcxproj -> R:\Projects\OSRAM\\bin\Debug\OSRAM.exe
+  OSRAM.vcxproj -> R:\Projects\OSRAM\\bin\Debug\OSRAM.pdb (Partial PDB)

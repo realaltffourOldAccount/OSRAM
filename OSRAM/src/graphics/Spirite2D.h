@@ -17,7 +17,7 @@ namespace OSRAM {
 			{
 				glm::vec2 _center;
 				glm::vec2 _size;
-				glm::vec4 _color;
+				glm::vec4 _color[4];
 			};
 			Spirite2D(DATA data, Shaders *shader);
 			~Spirite2D();
@@ -30,7 +30,6 @@ namespace OSRAM {
 			Shaders *m_Shader;
 			
 			GLubyte ind[6] = { 0,1,2, 3,1,2 };
-			float *m_vertices;
 		};
 	}
 }

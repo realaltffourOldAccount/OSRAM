@@ -21,7 +21,7 @@ OSRAM::INPUT::Input::Input(GLFWwindow* window, int cursor)
 
 	inited = true;
 	glfwSetInputMode(window, GLFW_CURSOR, cursor);
-	std::cout << "[INPUT] Initiated Input Class . . . " << std::endl;
+	std::cout << "[INPUT] Input Class . . . SUCCESS" << std::endl;
 }
 
 OSRAM::INPUT::Input::~Input()

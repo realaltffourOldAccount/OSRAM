@@ -22,10 +22,11 @@ namespace OSRAM	{
 					getline(read, str);
 				}
 				//cout << str1 << endl;
+				std::cout << "[FILE] File Reading: " + filename << " . . . SUCCESS" << std::endl;;
 				return str1;
 			}
 			else
-				std::cout << "[FILE]File Could Not Be Opened . . . " + filename << std::endl;
+				std::cout << "[FILE] File Reading: " + filename << " . . . FAIL" << std::endl;
 		}
 	}
 }

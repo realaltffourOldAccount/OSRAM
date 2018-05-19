@@ -47,7 +47,7 @@ OSRAM::GRAPHICS::Shaders::Shaders()
 	}
 	else
 	{
-		std::cout << "[SHADER:FS] Successfully Created Shader . . . " << std::endl;
+		std::cout << "[SHADER:FS] Shader Creatioin . . . SUCCESS" << std::endl;
 	}
 
 	m_BasicProgram = glCreateProgram();
@@ -59,7 +59,7 @@ OSRAM::GRAPHICS::Shaders::Shaders()
 	if (basiclinked != GL_FALSE)
 	{
 		// ok
-		std::cout << "[SHADERS:LINK] Successfully Linked . . . ." << std::endl;
+		std::cout << "[SHADERS:LINK] Link Status . . . . SUCCESS" << std::endl;
 	}
 	else
 	{
@@ -105,7 +105,7 @@ OSRAM::GRAPHICS::Shaders::Shaders()
 	}
 	else
 	{
-		std::cout << "[SHADER:VS] Successfully Created Shader . . . " << std::endl;
+		std::cout << "[SHADER:VS] Shader Createion . . . SUCCESS" << std::endl;
 	}
 
 	glCompileShader(m_texVS);
@@ -122,7 +122,7 @@ OSRAM::GRAPHICS::Shaders::Shaders()
 	}
 	else
 	{
-		std::cout << "[SHADER:VS] Successfully Created Shader . . . " << std::endl;
+		std::cout << "[SHADER:VS] Shader Creation . . . SUCCESS" << std::endl;
 	}
 
 	m_TextureProgram = glCreateProgram();
@@ -134,7 +134,7 @@ OSRAM::GRAPHICS::Shaders::Shaders()
 	if (texlinked != GL_FALSE)
 	{
 		// ok
-		std::cout << "[SHADERS:LINK] Successfully Linked . . . ." << std::endl;
+		std::cout << "[SHADERS:LINK] Link Status . . . SUCCESS" << std::endl;
 	}
 	else
 	{
