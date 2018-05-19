@@ -74,10 +74,14 @@ int main()
 	//shader.Uniform4f(shader.GetBasicProgram(),"m_Color", 0.2f, 0.3f, 0.5f, 1.0f);
 	//glClearColor(0.03f, 0.0f, 0.0f, 1.0f);
 
-    
+	bool show_demo_window = true;
+	bool show_another_window = false;
+	ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
 	while (!glfwWindowShouldClose(window.getWindowHandler()))
 	{
 		window.Update();
+
+		window.RenderImGUI();
 		sprite.LegacyDraw();
 	}
 	return 0;

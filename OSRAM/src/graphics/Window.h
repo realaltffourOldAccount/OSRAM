@@ -2,10 +2,13 @@
 #include <GL\glew.h>
 #include <GLFW\glfw3.h>
 
-#include <GLM/glm.hpp>
-#include <GLM/gtc/matrix_transform.hpp>
+#include <GLM\glm.hpp>
+#include <GLM\gtc\matrix_transform.hpp>
 
 #include <iostream>
+
+#include "../utils/imGUI/imgui.h"
+#include "../utils/imGUI/imgui_impl_glfw_gl3.h"
 
 namespace OSRAM {
 	namespace GRAPHICS {
@@ -31,6 +34,8 @@ namespace OSRAM {
 			int getWindowWidth() { return m_Width; };
 			int getWindowHeight() { return m_Height; };
 			Window* getWindowInstance() { return INSTANCE; };
+
+			void RenderImGUI();
 
 		private:
 			void init();

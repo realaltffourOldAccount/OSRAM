@@ -141,6 +141,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\graphics\MVP.cpp" />
     <ClCompile Include="src\graphics\buffer\IBO.cpp" />
     <ClCompile Include="src\graphics\Shaders.cpp" />
     <ClCompile Include="src\graphics\Sprite2D.cpp" />
@@ -149,9 +150,14 @@
     <ClCompile Include="src\graphics\Window.cpp" />
     <ClCompile Include="src\graphics\buffer\VBO.cpp" />
     <ClCompile Include="src\graphics\buffer\VAO.cpp" />
+    <ClCompile Include="src\utils\imGUI\imgui.cpp" />
+    <ClCompile Include="src\utils\imGUI\imgui_demo.cpp" />
+    <ClCompile Include="src\utils\imGUI\imgui_draw.cpp" />
+    <ClCompile Include="src\utils\imGUI\imgui_impl_glfw_gl3.cpp" />
     <ClCompile Include="src\utils\stbi_image.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\graphics\MVP.h" />
     <ClInclude Include="src\graphics\Spirite2D.h" />
     <ClInclude Include="src\graphics\buffer\IBO.h" />
     <ClInclude Include="src\graphics\Shaders.h" />
@@ -160,6 +166,13 @@
     <ClInclude Include="src\utils\fileutils.h" />
     <ClInclude Include="src\graphics\buffer\VBO.h" />
     <ClInclude Include="src\graphics\buffer\VAO.h" />
+    <ClInclude Include="src\utils\imGUI\imconfig.h" />
+    <ClInclude Include="src\utils\imGUI\imgui.h" />
+    <ClInclude Include="src\utils\imGUI\imgui_impl_glfw_gl3.h" />
+    <ClInclude Include="src\utils\imGUI\imgui_internal.h" />
+    <ClInclude Include="src\utils\imGUI\stb_rect_pack.h" />
+    <ClInclude Include="src\utils\imGUI\stb_textedit.h" />
+    <ClInclude Include="src\utils\imGUI\stb_truetype.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="src\shaders\basic_fs.glsl" />

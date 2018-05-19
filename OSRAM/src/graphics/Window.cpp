@@ -10,8 +10,11 @@ OSRAM::GRAPHICS::Window::Window(int width, int height, std::string title)
 
 OSRAM::GRAPHICS::Window::~Window()
 {
+	ImGui_ImplGlfwGL3_Shutdown();
+	ImGui::DestroyContext();
 	glfwTerminate();
 }
+
 
 
 void OSRAM::GRAPHICS::Window::init()
@@ -32,10 +35,15 @@ void OSRAM::GRAPHICS::Window::init()
 	else std::cout << "[WINDOW] GLEW Init . . .SUCCESS" << std::endl;
 
 	glViewport(0, 0, m_Width, m_Height);
-	glfwSwapInterval(0);
+	glfwSwapInterval(1);
 	glfwShowWindow(m_Window);
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+	ImGui::CreateContext();
+	ImGui_ImplGlfwGL3_Init(m_Window, true);
+	ImGui::StyleColorsDark();
+
 }
 
 void OSRAM::GRAPHICS::Window::Update() 
@@ -44,6 +52,13 @@ void OSRAM::GRAPHICS::Window::Update()
 	glfwSwapBuffers(m_Window);
 	glClear(GL_COLOR_BUFFER_BIT);
 	///this->CheckError();
+	ImGui_ImplGlfwGL3_NewFrame();
+}
+
+void OSRAM::GRAPHICS::Window::RenderImGUI()
+{
+	ImGui::Render();
+	ImGui_ImplGlfwGL3_RenderDrawData(ImGui::GetDrawData());
 }
 
 void OSRAM::GRAPHICS::Window::CheckError()

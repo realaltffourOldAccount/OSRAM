@@ -2,6 +2,8 @@
 #include "..\utils\fileutils.h"
 #include <GL\glew.h>
 #include <GLM\glm.hpp>
+#include <GLM\mat4x4.hpp>
+#include <GLM\gtc\matrix_transform.hpp>
 
 namespace OSRAM
 {
@@ -18,6 +20,7 @@ namespace OSRAM
 			std::string m_basicFS_Source;
 			std::string m_texVS_Source;
 			std::string m_texFS_Source;
+
 		public:
 			Shaders();
 			~Shaders();

@@ -23,6 +23,9 @@ namespace OSRAM {
 			~Spirite2D();
 			
 			void LegacyDraw();
+
+			void accelerateX();
+			void accelerateY();
 		private:
 			VAO *m_VAO;
 			IBO *m_IBO;
@@ -30,6 +33,10 @@ namespace OSRAM {
 			Shaders *m_Shader;
 			
 			GLubyte ind[6] = { 0,1,2, 3,1,2 };
+
+			float acc_speed = 0.01;
+			float acc_x, acc_y;
+			bool acc_true = false;
 		};
 	}
 }

@@ -53,5 +53,11 @@ namespace OSRAM {
 			m_IBO->unBind();
 			m_VAO->unBind();
 		}
+		void Spirite2D::accelerateX()
+		{
+		}
+		void Spirite2D::accelerateY()
+		{
+		}
 	}
 }

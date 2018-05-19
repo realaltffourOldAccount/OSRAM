@@ -152,7 +152,6 @@ OSRAM::GRAPHICS::Shaders::Shaders()
 
 		std::cout << "[SHADER:LINK] Failed to Link Program : " << message << std::endl;
 	}
-
 }
 
 OSRAM::GRAPHICS::Shaders::~Shaders()
@@ -166,11 +165,13 @@ OSRAM::GRAPHICS::Shaders::~Shaders()
 void OSRAM::GRAPHICS::Shaders::UseBasicProgram()
 {
 	glUseProgram(m_BasicProgram);
+	m_CurrentProgram = m_BasicProgram;
 }
 
 void OSRAM::GRAPHICS::Shaders::UseTextureProgram()
 {
 	glUseProgram(m_TextureProgram);
+	m_CurrentProgram = m_TextureProgram;
 }
 
 void OSRAM::GRAPHICS::Shaders::Uniform1f(unsigned int program, const char* str, float val)
