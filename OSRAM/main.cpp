@@ -6,6 +6,7 @@
 #include "src/graphics/buffer/VAO.h"
 #include "src/graphics/Spirite2D.h"
 #include "src/graphics/MVP.h"
+#include "src/audio/AudioManager.h"
 
 #include <GLM/gtc/matrix_transform.hpp>
 #include <GLM/mat4x4.hpp>
@@ -76,6 +77,14 @@ int main()
 	shader.UseBasicProgram();
 	//shader.Uniform4f(shader.GetBasicProgram(),"m_Color", 0.2f, 0.3f, 0.5f, 1.0f);
 	//glClearColor(0.03f, 0.0f, 0.0f, 1.0f);
+
+	OSRAM::AUDIO::AudioManager audio;
+
+	audio.DisplayDeviceList();
+
+	audio.AddScene("main");
+	audio.AddAudioObject(audio.GetSceneID("main"), "test1", 1, glm::vec3(0, 0, 0), 1, true, glm::vec3(0, 0, 0));
+	audio.RemoveAudioObject(audio.GetSceneID("main"), "test1");
 
 	while (!glfwWindowShouldClose(window.getWindowHandler()))
 	{

@@ -14,6 +14,7 @@ r:\projects\osram\osram\debug\imgui_demo.obj
 r:\projects\osram\osram\debug\imgui_draw.obj
 r:\projects\osram\osram\debug\imgui_impl_glfw_gl3.obj
 r:\projects\osram\osram\debug\stbi_image.obj
+r:\projects\osram\osram\debug\audiomanager.obj
 r:\projects\osram\bin\debug\osram.ilk
 r:\projects\osram\bin\debug\osram.exe
 r:\projects\osram\bin\debug\osram.pdb
