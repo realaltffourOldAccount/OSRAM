@@ -16,6 +16,16 @@ namespace OSRAM {
 				data._center.x - (data._size.x / 2), data._center.y + (data._size.y / 2),	data._color[2].x, data._color[2].y, data._color[2].z, data._color[2].w,
 				data._center.x + (data._size.x / 2), data._center.y + (data._size.y / 2),	data._color[3].x, data._color[3].y, data._color[3].z, data._color[3].w
 			};
+			m_Vertices[0].x = data._center.x - (data._size.x / 2);
+			m_Vertices[0].y = data._center.y - (data._size.y / 2);
+			m_Vertices[1].x = data._center.x + (data._size.x / 2);
+			m_Vertices[1].y = data._center.y - (data._size.y / 2);
+			m_Vertices[2].x = data._center.x - (data._size.x / 2);
+			m_Vertices[2].y = data._center.y + (data._size.y / 2);
+			m_Vertices[3].x = data._center.x + (data._size.x / 2);
+			m_Vertices[3].y = data._center.y + (data._size.y / 2);
+			
+			memcpy(&m_Buffer, &vertices, sizeof(vertices));
 
 			VAO::buffer_layout layout;
 			layout._vertices_layout = new VAO::buffer_vertices_data_info;
@@ -25,7 +35,8 @@ namespace OSRAM {
 			layout._vertices_layout->_components = 2;
 			layout._vertices_layout->_offset = 0;
 			layout._vertices_layout->_stride = sizeof(GLfloat) * 6;
-			
+
+
 			//std::cout << sizeof(GLfloat) * 2 << "/" << sizeof(data._center.x - (data._size.x / 2)) * 2  << std::endl;
 
 			// Colors
@@ -52,12 +63,6 @@ namespace OSRAM {
 			glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_BYTE, nullptr);
 			m_IBO->unBind();
 			m_VAO->unBind();
-		}
-		void Spirite2D::accelerateX()
-		{
-		}
-		void Spirite2D::accelerateY()
-		{
 		}
 	}
 }

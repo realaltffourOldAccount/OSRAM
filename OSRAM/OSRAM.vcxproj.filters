@@ -57,7 +57,7 @@
     <ClCompile Include="src\graphics\MVP.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\audio\AudioManager.cpp">
+    <ClCompile Include="src\graphics\Renderer2D.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -110,7 +110,10 @@
     <ClInclude Include="src\graphics\MVP.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\audio\AudioManager.h">
+    <ClInclude Include="src\graphics\Renderer2D.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\graphics\Renderable2D.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

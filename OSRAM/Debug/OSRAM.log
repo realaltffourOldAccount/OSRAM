@@ -1,9 +1,3 @@
 ﻿  main.cpp
-  Generating Code...
-  Compiling...
-  AudioManager.cpp
-  Generating Code...
-r:\projects\osram\osram\src\audio\audiomanager.cpp(182): warning C4715: 'OSRAM::AUDIO::AudioManager::GetAudioObjectID': not all control paths return a value
-r:\projects\osram\osram\src\audio\audiomanager.cpp(167): warning C4715: 'OSRAM::AUDIO::AudioManager::IsAudioObject': not all control paths return a value
   OSRAM.vcxproj -> R:\Projects\OSRAM\\bin\Debug\OSRAM.exe
   OSRAM.vcxproj -> R:\Projects\OSRAM\\bin\Debug\OSRAM.pdb (Partial PDB)

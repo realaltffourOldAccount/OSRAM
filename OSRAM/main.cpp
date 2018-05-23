@@ -6,7 +6,6 @@
 #include "src/graphics/buffer/VAO.h"
 #include "src/graphics/Spirite2D.h"
 #include "src/graphics/MVP.h"
-#include "src/audio/AudioManager.h"
 
 #include <GLM/gtc/matrix_transform.hpp>
 #include <GLM/mat4x4.hpp>
@@ -52,7 +51,7 @@ int main()
 	};
 	GLubyte ind[6] = { 0,1,2, 3,1,2 };
 
-	OSRAM::GRAPHICS::Window window(460, 460, "Defualt Title");
+	OSRAM::GRAPHICS::Window window(460, 460, "Default Title");
 	OSRAM::INPUT::Input input(window.getWindowHandler(), GLFW_CURSOR_NORMAL);
 	OSRAM::GRAPHICS::Shaders shader;
 	OSRAM::GRAPHICS::MVP mvp(&shader);
@@ -72,25 +71,18 @@ int main()
 	data._color[1] = glm::vec4(0.0f, 1.0f, 0.0f, 0.5f);
 	data._color[2] = glm::vec4(0.0f, 0.0f, 1.0f, 0.5f);
 	data._color[3] = glm::vec4(0.5f, 0.5f, 0.0f, 0.5f);
-
 	OSRAM::GRAPHICS::Spirite2D sprite(data, &shader);
 	shader.UseBasicProgram();
+	mvp.SetModelMatrix(sprite.GetModelMatrix());
+	//mvp.SetViewMatrix(view);
+
 	//shader.Uniform4f(shader.GetBasicProgram(),"m_Color", 0.2f, 0.3f, 0.5f, 1.0f);
 	//glClearColor(0.03f, 0.0f, 0.0f, 1.0f);
-
-	OSRAM::AUDIO::AudioManager audio;
-
-	audio.DisplayDeviceList();
-
-	audio.AddScene("main");
-	audio.AddAudioObject(audio.GetSceneID("main"), "test1", 1, glm::vec3(0, 0, 0), 1, true, glm::vec3(0, 0, 0));
-	audio.RemoveAudioObject(audio.GetSceneID("main"), "test1");
 
 	while (!glfwWindowShouldClose(window.getWindowHandler()))
 	{
 		window.Update();
 		window.RenderImGUI();
-		mvp.SetViewMatrix(view);
 		sprite.LegacyDraw();
 	}
 	return 0;
