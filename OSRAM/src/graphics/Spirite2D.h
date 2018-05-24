@@ -17,7 +17,7 @@ namespace OSRAM {
 			Spirite2D(DATA data, Shaders *shader);
 			~Spirite2D();
 			
-			void LegacyDraw();
+			void LegacyDraw() override;
 			float* BufferValue() { return m_Buffer; };
 		private:
 			VAO *m_VAO;

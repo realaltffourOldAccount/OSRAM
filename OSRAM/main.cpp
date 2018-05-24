@@ -63,27 +63,76 @@ int main()
 	glm::mat4 view(1.0f);
 	//view = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, -0.4f, 0.3f));
 	view = glm::rotate(glm::mat4(1.0f), glm::radians(25.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+	proj = glm::ortho(0.0f, 230.0f, 0.0f, 230.0f, -1.0f, 1.0f);
 
 	OSRAM::GRAPHICS::Spirite2D::DATA data;
-	data._center = glm::vec2(0.0f, 0.0f);
-	data._size = glm::vec2(0.5f, 0.5f);
+	data._center = glm::vec2(50.0f, 50.0f);
+	data._size = glm::vec2(10.0f, 10.0f);
 	data._color[0] = glm::vec4(1.0f, 0.0f, 0.0f, 0.5f);
 	data._color[1] = glm::vec4(0.0f, 1.0f, 0.0f, 0.5f);
 	data._color[2] = glm::vec4(0.0f, 0.0f, 1.0f, 0.5f);
 	data._color[3] = glm::vec4(0.5f, 0.5f, 0.0f, 0.5f);
 	OSRAM::GRAPHICS::Spirite2D sprite(data, &shader);
+
+	OSRAM::GRAPHICS::Spirite2D::DATA data2;
+	data2._center = glm::vec2(0.4f, 0.4f);
+	data2._size = glm::vec2(0.2f, 0.2f);
+	data2._color[0] = glm::vec4(1.0f, 0.0f, 0.0f, 0.5f);
+	data2._color[1] = glm::vec4(0.0f, 1.0f, 0.0f, 0.5f);
+	data2._color[2] = glm::vec4(0.0f, 0.0f, 1.0f, 0.5f);
+	data2._color[3] = glm::vec4(0.5f, 0.5f, 0.0f, 0.5f);
+	OSRAM::GRAPHICS::Spirite2D sprite2(data2, &shader);
+
 	shader.UseBasicProgram();
 	mvp.SetModelMatrix(sprite.GetModelMatrix());
+	mvp.SetProjectionMatrix(proj);
 	//mvp.SetViewMatrix(view);
 
 	//shader.Uniform4f(shader.GetBasicProgram(),"m_Color", 0.2f, 0.3f, 0.5f, 1.0f);
 	//glClearColor(0.03f, 0.0f, 0.0f, 1.0f);
 
+	sprite.EnableProgressiveAcc(true, 0.5f);
+	sprite.SetAccelerationSpeedPos(0.5f);
+	sprite.SetAccelerationSpeedNeg(-0.5f);
 	while (!glfwWindowShouldClose(window.getWindowHandler()))
 	{
 		window.Update();
-		window.RenderImGUI();
+
+		if (input.isKeyPressed(GLFW_KEY_W) == true)
+			sprite.accelerateY(true);
+		else if (input.isKeyPressed(GLFW_KEY_W) == false && input.isKeyPressed(GLFW_KEY_S) == false 
+			&& input.isKeyPressed(GLFW_KEY_D) == false && input.isKeyPressed(GLFW_KEY_A) == false)
+		{	
+			sprite.ResetSpeedPos();
+		}
+		if (input.isKeyPressed(GLFW_KEY_S) == true)
+				sprite.accelerateNegY(true);
+		else if (input.isKeyPressed(GLFW_KEY_S) == false && input.isKeyPressed(GLFW_KEY_W) == false 
+			&& input.isKeyPressed(GLFW_KEY_D) == false && input.isKeyPressed(GLFW_KEY_A) == false)
+		{
+			sprite.ResetSpeedNeg();
+		}
+		if (input.isKeyPressed(GLFW_KEY_D) == true)
+			sprite.accelerateX(true);
+		else if (input.isKeyPressed(GLFW_KEY_D) == false && input.isKeyPressed(GLFW_KEY_A) == false
+			&& input.isKeyPressed(GLFW_KEY_W) == false && input.isKeyPressed(GLFW_KEY_S) == false)
+		{
+			sprite.ResetSpeedPos();
+		}
+		if (input.isKeyPressed(GLFW_KEY_A) == true)
+			sprite.accelerateNegX(true);
+		else if (input.isKeyPressed(GLFW_KEY_A) == false && input.isKeyPressed(GLFW_KEY_D) == false 
+			&& input.isKeyPressed(GLFW_KEY_W) == false && input.isKeyPressed(GLFW_KEY_S) == false)
+		{
+			sprite.ResetSpeedNeg();
+		}
+
+		mvp.SetModelMatrix(sprite.GetModelMatrix());
 		sprite.LegacyDraw();
+		mvp.SetModelMatrix(sprite2.GetModelMatrix());
+		sprite2.LegacyDraw();
+
+		window.RenderImGUI();
 	}
 	return 0;
 }

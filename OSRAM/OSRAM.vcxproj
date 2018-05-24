@@ -147,7 +147,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\graphics\Renderer2D.cpp" />
     <ClCompile Include="src\graphics\MVP.cpp" />
     <ClCompile Include="src\graphics\buffer\IBO.cpp" />
     <ClCompile Include="src\graphics\Shaders.cpp" />
@@ -165,7 +164,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\graphics\Renderable2D.h" />
-    <ClInclude Include="src\graphics\Renderer2D.h" />
     <ClInclude Include="src\graphics\MVP.h" />
     <ClInclude Include="src\graphics\Spirite2D.h" />
     <ClInclude Include="src\graphics\buffer\IBO.h" />

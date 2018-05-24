@@ -19,7 +19,6 @@ namespace OSRAM {
 			void SetViewMatrix(glm::mat4 view);
 			void SetProjectionMatrix(glm::mat4 proj);
 		private:
-			
 			Shaders *m_Shader;
 		};
 	}
