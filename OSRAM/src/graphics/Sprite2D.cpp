@@ -1,11 +1,11 @@
-#include "Spirite2D.h"
+#include "Sprite2D.h"
 
 #define STB_IMAGE_IMPLEMENTATION
 #include "../utils/stbi_image.h"
 
 namespace OSRAM {
 	namespace GRAPHICS {
-		Spirite2D::Spirite2D(DATA data, Shaders *shader)
+		Sprite2D::Sprite2D(DATA data, Shaders *shader)
 		{
 			m_Data = data;
 			m_Shader = shader;
@@ -50,11 +50,11 @@ namespace OSRAM {
 			
 		}
 
-		Spirite2D::~Spirite2D()
+		Sprite2D::~Sprite2D()
 		{
 		}
 
-		void Spirite2D::LegacyDraw()
+		void Sprite2D::LegacyDraw()
 		{
 			m_VAO->Bind();
 			m_IBO->Bind();

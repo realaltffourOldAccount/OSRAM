@@ -4,8 +4,9 @@
 #include "src/graphics/buffer/VBO.h"
 #include "src/graphics/buffer/IBO.h"
 #include "src/graphics/buffer/VAO.h"
-#include "src/graphics/Spirite2D.h"
+#include "src/graphics/Sprite2D.h"
 #include "src/graphics/MVP.h"
+#include "src/graphics/BasicRenderer2D.h"
 
 #include <GLM/gtc/matrix_transform.hpp>
 #include <GLM/mat4x4.hpp>
@@ -65,23 +66,25 @@ int main()
 	view = glm::rotate(glm::mat4(1.0f), glm::radians(25.0f), glm::vec3(0.0f, 0.0f, 1.0f));
 	proj = glm::ortho(0.0f, 230.0f, 0.0f, 230.0f, -1.0f, 1.0f);
 
-	OSRAM::GRAPHICS::Spirite2D::DATA data;
+	OSRAM::GRAPHICS::Sprite2D::DATA data;
 	data._center = glm::vec2(50.0f, 50.0f);
 	data._size = glm::vec2(10.0f, 10.0f);
 	data._color[0] = glm::vec4(1.0f, 0.0f, 0.0f, 0.5f);
 	data._color[1] = glm::vec4(0.0f, 1.0f, 0.0f, 0.5f);
 	data._color[2] = glm::vec4(0.0f, 0.0f, 1.0f, 0.5f);
 	data._color[3] = glm::vec4(0.5f, 0.5f, 0.0f, 0.5f);
-	OSRAM::GRAPHICS::Spirite2D sprite(data, &shader);
+	OSRAM::GRAPHICS::Sprite2D sprite(data, &shader);
 
-	OSRAM::GRAPHICS::Spirite2D::DATA data2;
-	data2._center = glm::vec2(0.4f, 0.4f);
-	data2._size = glm::vec2(0.2f, 0.2f);
+	OSRAM::GRAPHICS::Sprite2D::DATA data2;
+	data2._center = glm::vec2(60.4f, 50.4f);
+	data2._size = glm::vec2(5.0f, 5.2f);
 	data2._color[0] = glm::vec4(1.0f, 0.0f, 0.0f, 0.5f);
 	data2._color[1] = glm::vec4(0.0f, 1.0f, 0.0f, 0.5f);
 	data2._color[2] = glm::vec4(0.0f, 0.0f, 1.0f, 0.5f);
 	data2._color[3] = glm::vec4(0.5f, 0.5f, 0.0f, 0.5f);
-	OSRAM::GRAPHICS::Spirite2D sprite2(data2, &shader);
+	OSRAM::GRAPHICS::Sprite2D sprite2(data2, &shader);
+
+	OSRAM::GRAPHICS::BasicRenderer2D basic_renderer2d;
 
 	shader.UseBasicProgram();
 	mvp.SetModelMatrix(sprite.GetModelMatrix());
@@ -127,10 +130,11 @@ int main()
 			sprite.ResetSpeedNeg();
 		}
 
+		basic_renderer2d.submit(&sprite);
+		basic_renderer2d.submit(&sprite2);
 		mvp.SetModelMatrix(sprite.GetModelMatrix());
-		sprite.LegacyDraw();
-		mvp.SetModelMatrix(sprite2.GetModelMatrix());
-		sprite2.LegacyDraw();
+		//sprite.LegacyDraw();
+		basic_renderer2d.flush();
 
 		window.RenderImGUI();
 	}

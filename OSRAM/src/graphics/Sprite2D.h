@@ -11,11 +11,11 @@
 using namespace OSRAM::GRAPHICS::BUFFER;
 namespace OSRAM {
 	namespace GRAPHICS {
-		class Spirite2D : public Renderable2D
+		class Sprite2D : public Renderable2D
 		{
 		public:
-			Spirite2D(DATA data, Shaders *shader);
-			~Spirite2D();
+			Sprite2D(DATA data, Shaders *shader);
+			~Sprite2D();
 			
 			void LegacyDraw() override;
 			float* BufferValue() { return m_Buffer; };

@@ -147,6 +147,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\graphics\BasicRenderer2D.cpp" />
     <ClCompile Include="src\graphics\MVP.cpp" />
     <ClCompile Include="src\graphics\buffer\IBO.cpp" />
     <ClCompile Include="src\graphics\Shaders.cpp" />
@@ -163,13 +164,15 @@
     <ClCompile Include="src\utils\stbi_image.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\graphics\BasicRenderer2D.h" />
     <ClInclude Include="src\graphics\Renderable2D.h" />
     <ClInclude Include="src\graphics\MVP.h" />
-    <ClInclude Include="src\graphics\Spirite2D.h" />
+    <ClInclude Include="src\graphics\Sprite2D.h" />
     <ClInclude Include="src\graphics\buffer\IBO.h" />
     <ClInclude Include="src\graphics\Shaders.h" />
     <ClInclude Include="src\input\Input.h" />
     <ClInclude Include="src\graphics\Window.h" />
+    <ClInclude Include="src\graphics\Render2D.h" />
     <ClInclude Include="src\utils\fileutils.h" />
     <ClInclude Include="src\graphics\buffer\VBO.h" />
     <ClInclude Include="src\graphics\buffer\VAO.h" />
