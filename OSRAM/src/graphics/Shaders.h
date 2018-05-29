@@ -12,21 +12,27 @@ namespace OSRAM
 		class Shaders
 		{
 		private:
-			unsigned int m_BasicProgram = 0, m_TextureProgram = 0;
+			unsigned int m_BasicProgram = 0, m_TextureProgram = 0, m_BatchProgram;
 			unsigned int m_CurrentProgram;
 			unsigned int m_basicVS, m_basicFS;
 			unsigned int m_texVS, m_texFS;
+			unsigned int m_batchVS, m_batchFS;
 			std::string m_basicVS_Source;
 			std::string m_basicFS_Source;
 			std::string m_texVS_Source;
 			std::string m_texFS_Source;
+			std::string m_batchVS_Source;
+			std::string m_batchFS_Source;
 		public:
 			Shaders();
 			~Shaders();
 			void UseBasicProgram();
+			void UseBatchProgram();
 			void UseTextureProgram();
 			unsigned int GetBasicProgram() { return m_BasicProgram; }
+			unsigned int GetBatchProgram() { return m_BatchProgram; }
 			unsigned int GetTextureProgram() { return m_TextureProgram; }
+
 
 			void Uniform1f(unsigned int program, const char*, float val);
 			void Uniform1i(unsigned int program, const char*, int val);

@@ -12,6 +12,11 @@
 #include <GLM/mat4x4.hpp>
 #include <iostream>
 
+//#define OSRAM_TEST 0
+#define OSRAM_PINGPONG 1
+
+#ifdef OSRAM_TEST
+
 void draw_vbo()
 {
 	GLuint vbo, ibo;
@@ -52,19 +57,22 @@ int main()
 	};
 	GLubyte ind[6] = { 0,1,2, 3,1,2 };
 
-	OSRAM::GRAPHICS::Window window(460, 460, "Default Title");
+	OSRAM::GRAPHICS::Window window(760, 560, "Default Title");
 	OSRAM::INPUT::Input input(window.getWindowHandler(), GLFW_CURSOR_NORMAL);
 	OSRAM::GRAPHICS::Shaders shader;
 	OSRAM::GRAPHICS::MVP mvp(&shader);
 	//OSRAM::GRAPHICS::BUFFER::VBO vbo(vert, 8, 2);
 	//OSRAM::GRAPHICS::BUFFER::IBO ibo(ind, 6);
-	
+
 	glm::mat4 proj(1.0f);
 	glm::mat4 model(1.0f);
 	glm::mat4 view(1.0f);
 	//view = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, -0.4f, 0.3f));
-	view = glm::rotate(glm::mat4(1.0f), glm::radians(25.0f), glm::vec3(0.0f, 0.0f, 1.0f));
-	proj = glm::ortho(0.0f, 230.0f, 0.0f, 230.0f, -1.0f, 1.0f);
+	//view = glm::rotate(glm::mat4(1.0f), glm::radians(25.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+	proj = glm::ortho(0.0f, (float)(760 / 2), 0.0f, (float)(560 / 2), -1.0f, 1.0f);
+	shader.UseBasicProgram();
+	mvp.SetBasicProjectionMatrix(proj);
+	mvp.SetBasicViewMatrix(view);
 
 	OSRAM::GRAPHICS::Sprite2D::DATA data;
 	data._center = glm::vec2(50.0f, 50.0f);
@@ -84,59 +92,80 @@ int main()
 	data2._color[3] = glm::vec4(0.5f, 0.5f, 0.0f, 0.5f);
 	OSRAM::GRAPHICS::Sprite2D sprite2(data2, &shader);
 
-	OSRAM::GRAPHICS::BasicRenderer2D basic_renderer2d;
+	//OSRAM::GRAPHICS::BasicRenderer2D basic_renderer2d(&mvp);
+	//	OSRAM::GRAPHICS::BatchRenderer2D batch_renderer2d(proj, view, &mvp);
 
-	shader.UseBasicProgram();
-	mvp.SetModelMatrix(sprite.GetModelMatrix());
-	mvp.SetProjectionMatrix(proj);
-	//mvp.SetViewMatrix(view);
+		//mvp.SetModelMatrix(sprite.GetModelMatrix());
 
-	//shader.Uniform4f(shader.GetBasicProgram(),"m_Color", 0.2f, 0.3f, 0.5f, 1.0f);
-	//glClearColor(0.03f, 0.0f, 0.0f, 1.0f);
+		//shader.Uniform4f(shader.GetBasicProgram(),"m_Color", 0.2f, 0.3f, 0.5f, 1.0f);
+		//glClearColor(0.03f, 0.0f, 0.0f, 1.0f);
 
-	sprite.EnableProgressiveAcc(true, 0.5f);
-	sprite.SetAccelerationSpeedPos(0.5f);
-	sprite.SetAccelerationSpeedNeg(-0.5f);
+	sprite.EnableProgressiveAcc(true);
+	sprite.SetChangerSpeedPosY(0.5f);
+	sprite.SetChangerSpeedNegY(-0.5f);
+	sprite.SetChangerSpeedPosX(0.5f);
+	sprite.SetChangerSpeedNegX(-0.5f);
+	sprite.SetSpeedPosY(0.5f);
+	sprite.SetSpeedPosX(0.5f);
+	sprite.SetSpeedNegX(0.5f);
+	sprite.SetSpeedNegY(0.5f);
+
+	//sprite.accelerateX(true);
 	while (!glfwWindowShouldClose(window.getWindowHandler()))
 	{
 		window.Update();
 
 		if (input.isKeyPressed(GLFW_KEY_W) == true)
+		{
 			sprite.accelerateY(true);
-		else if (input.isKeyPressed(GLFW_KEY_W) == false && input.isKeyPressed(GLFW_KEY_S) == false 
-			&& input.isKeyPressed(GLFW_KEY_D) == false && input.isKeyPressed(GLFW_KEY_A) == false)
-		{	
-			sprite.ResetSpeedPos();
 		}
 		if (input.isKeyPressed(GLFW_KEY_S) == true)
-				sprite.accelerateNegY(true);
-		else if (input.isKeyPressed(GLFW_KEY_S) == false && input.isKeyPressed(GLFW_KEY_W) == false 
-			&& input.isKeyPressed(GLFW_KEY_D) == false && input.isKeyPressed(GLFW_KEY_A) == false)
 		{
-			sprite.ResetSpeedNeg();
+			sprite.accelerateNegY(true);
 		}
 		if (input.isKeyPressed(GLFW_KEY_D) == true)
-			sprite.accelerateX(true);
-		else if (input.isKeyPressed(GLFW_KEY_D) == false && input.isKeyPressed(GLFW_KEY_A) == false
-			&& input.isKeyPressed(GLFW_KEY_W) == false && input.isKeyPressed(GLFW_KEY_S) == false)
 		{
-			sprite.ResetSpeedPos();
+			sprite.accelerateX(true);
 		}
 		if (input.isKeyPressed(GLFW_KEY_A) == true)
-			sprite.accelerateNegX(true);
-		else if (input.isKeyPressed(GLFW_KEY_A) == false && input.isKeyPressed(GLFW_KEY_D) == false 
-			&& input.isKeyPressed(GLFW_KEY_W) == false && input.isKeyPressed(GLFW_KEY_S) == false)
 		{
-			sprite.ResetSpeedNeg();
+			sprite.accelerateNegX(true);
+		}
+		else if (input.isKeyPressed(GLFW_KEY_W) == false && input.isKeyPressed(GLFW_KEY_S) == false
+			&& input.isKeyPressed(GLFW_KEY_D) == false && input.isKeyPressed(GLFW_KEY_A) == false)
+		{
+			sprite.ResetSpeedPosX();
+			sprite.ResetSpeedPosY();
+			sprite.ResetSpeedNegX();
+			sprite.ResetSpeedNegY();
 		}
 
-		basic_renderer2d.submit(&sprite);
-		basic_renderer2d.submit(&sprite2);
-		mvp.SetModelMatrix(sprite.GetModelMatrix());
-		//sprite.LegacyDraw();
-		basic_renderer2d.flush();
+		shader.UseBasicProgram();
+		//basic_renderer2d.submit(&sprite);
+		//glm::mat4 temp = glm::mat4(1.0f);
+		mvp.SetBasicModelMatrix(sprite.GetModelMatrix());
+		sprite.LegacyDraw();
+		//basic_renderer2d.flush(proj, view, sprite.GetModelMatrix());
 
 		window.RenderImGUI();
 	}
 	return 0;
 }
+#endif // OSRAM_TEST
+
+
+#include "example\PingPong_example.h"
+#ifdef OSRAM_PINGPONG
+
+
+int main()
+{
+	PingPong game;
+	
+	game.Run();
+
+	return 0;
+}
+
+#endif // OSRAM_PINGPONG
+

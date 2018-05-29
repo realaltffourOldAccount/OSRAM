@@ -23,8 +23,8 @@ void OSRAM::GRAPHICS::Window::init()
 		std::cout << "[WINDOW] GLFW Init . . . FAIL" << std::endl;
 	else std::cout << "[WINDOW] GLFW Init . . . SUCCESS" << std::endl;
 
-	m_Window = glfwCreateWindow(m_Height,
-								m_Width,
+	m_Window = glfwCreateWindow(m_Width,
+								m_Height,
 								m_Title.c_str(),
 								NULL,NULL);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);

@@ -15,9 +15,14 @@ namespace OSRAM {
 			MVP(Shaders *shader);
 			~MVP();
 
-			void SetModelMatrix(glm::mat4 mat);
-			void SetViewMatrix(glm::mat4 view);
-			void SetProjectionMatrix(glm::mat4 proj);
+			void SetBasicModelMatrix(glm::mat4 mat);
+			void SetBasicViewMatrix(glm::mat4 view);
+			void SetBasicProjectionMatrix(glm::mat4 proj);
+
+			void SetBatchModelMatrix(glm::mat4 mat);
+			void SetBatchViewMatrix(glm::mat4 view);
+			void SetBatchProjectionMatrix(glm::mat4 proj);
+
 		private:
 			Shaders *m_Shader;
 		};

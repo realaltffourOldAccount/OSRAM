@@ -7,6 +7,11 @@ namespace OSRAM {
 	namespace GRAPHICS {
 		Sprite2D::Sprite2D(DATA data, Shaders *shader)
 		{
+			m_Model[0].x = 1.0f;
+			m_Model[1].y = 1.0f;
+			m_Model[2].z = 1.0f;
+			/*m_Model[2].w = 1.0f;*/
+
 			m_Data = data;
 			m_Shader = shader;
 		
@@ -16,16 +21,36 @@ namespace OSRAM {
 				data._center.x - (data._size.x / 2), data._center.y + (data._size.y / 2),	data._color[2].x, data._color[2].y, data._color[2].z, data._color[2].w,
 				data._center.x + (data._size.x / 2), data._center.y + (data._size.y / 2),	data._color[3].x, data._color[3].y, data._color[3].z, data._color[3].w
 			};
-			m_Vertices[0].x = data._center.x - (data._size.x / 2);
-			m_Vertices[0].y = data._center.y - (data._size.y / 2);
-			m_Vertices[1].x = data._center.x + (data._size.x / 2);
-			m_Vertices[1].y = data._center.y - (data._size.y / 2);
-			m_Vertices[2].x = data._center.x - (data._size.x / 2);
-			m_Vertices[2].y = data._center.y + (data._size.y / 2);
-			m_Vertices[3].x = data._center.x + (data._size.x / 2);
-			m_Vertices[3].y = data._center.y + (data._size.y / 2);
+			m_Vertices[0] = data._center.x - (data._size.x / 2);
+			m_Vertices[1] = data._center.y - (data._size.y / 2);
+			m_Vertices[2] = data._center.x + (data._size.x / 2);
+			m_Vertices[3] = data._center.y - (data._size.y / 2);
+			m_Vertices[4] = data._center.x - (data._size.x / 2);
+			m_Vertices[5] = data._center.y + (data._size.y / 2);
+			m_Vertices[6] = data._center.x + (data._size.x / 2);
+			m_Vertices[7] = data._center.y + (data._size.y / 2);
 			
-			memcpy(&m_Buffer, &vertices, sizeof(vertices));
+			m_Colors[0] = data._color[0].x;
+			m_Colors[1] = data._color[0].y;
+			m_Colors[2] = data._color[0].z;
+			m_Colors[3] = data._color[0].w;
+
+			m_Colors[4] = data._color[1].x;
+			m_Colors[5] = data._color[1].y;
+			m_Colors[6] = data._color[1].z;
+			m_Colors[7] = data._color[1].w;
+
+			m_Colors[8] = data._color[2].x;
+			m_Colors[9] = data._color[2].y;
+			m_Colors[10] = data._color[2].z;
+			m_Colors[11] = data._color[2].w;
+						
+			m_Colors[12] = data._color[3].x;
+			m_Colors[13] = data._color[3].y;
+			m_Colors[14] = data._color[3].z;
+			m_Colors[15] = data._color[3].w;
+
+		//	memcpy(&m_Buffer, &vertices, sizeof(vertices));
 
 			VAO::buffer_layout layout;
 			layout._vertices_layout = new VAO::buffer_vertices_data_info;

@@ -60,6 +60,9 @@
     <ClCompile Include="src\graphics\BasicRenderer2D.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="example\PingPong_example.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\graphics\Window.h">
@@ -119,11 +122,16 @@
     <ClInclude Include="src\graphics\BasicRenderer2D.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="example\PingPong_example.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="src\shaders\basic_vs.glsl" />
     <None Include="src\shaders\basic_fs.glsl" />
     <None Include="src\shaders\tex_fs.glsl" />
     <None Include="src\shaders\tex_vs.glsl" />
+    <None Include="src\shaders\batch_vs.glsl" />
+    <None Include="src\shaders\batch_fs.glsl" />
   </ItemGroup>
 </Project>

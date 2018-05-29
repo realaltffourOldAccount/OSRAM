@@ -1,1 +1,8 @@
-﻿
+﻿  PingPong_example.cpp
+r:\projects\osram\osram\example\pingpong_example.cpp(312): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+r:\projects\osram\osram\example\pingpong_example.cpp(320): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+r:\projects\osram\osram\example\pingpong_example.cpp(321): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+r:\projects\osram\osram\example\pingpong_example.cpp(330): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+r:\projects\osram\osram\example\pingpong_example.cpp(331): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+  OSRAM.vcxproj -> R:\Projects\OSRAM\\bin\Debug\OSRAM.exe
+  OSRAM.vcxproj -> R:\Projects\OSRAM\\bin\Debug\OSRAM.pdb (Partial PDB)
