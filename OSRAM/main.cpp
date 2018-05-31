@@ -153,7 +153,7 @@ int main()
 }
 #endif // OSRAM_TEST
 
-
+#define GLEW_STATIC
 #include "example\PingPong_example.h"
 #ifdef OSRAM_PINGPONG
 
@@ -168,4 +168,3 @@ int main()
 }
 
 #endif // OSRAM_PINGPONG
-

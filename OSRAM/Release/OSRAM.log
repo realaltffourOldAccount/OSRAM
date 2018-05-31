@@ -1,7 +1,26 @@
-﻿  Sprite2D.cpp
+﻿  PingPong_example.cpp
+example\PingPong_example.cpp(312): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+example\PingPong_example.cpp(320): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+example\PingPong_example.cpp(321): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+example\PingPong_example.cpp(330): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+example\PingPong_example.cpp(331): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+  Sprite2DTex.cpp
+  BasicRenderer2D.cpp
+  MVP.cpp
+  IBO.cpp
+  Shaders.cpp
+  Sprite2D.cpp
+  Input.cpp
+  main.cpp
+  Window.cpp
+  VBO.cpp
+  VAO.cpp
+  imgui.cpp
+  imgui_demo.cpp
+  imgui_draw.cpp
+  imgui_impl_glfw_gl3.cpp
+  stbi_image.h
   Generating code
-  3 of 1047 functions ( 0.3%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
-    15 functions had inline decision re-evaluated but remain unchanged
+  All 1064 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
   Finished generating code
   OSRAM.vcxproj -> R:\Projects\OSRAM\\bin\Release\OSRAM.exe

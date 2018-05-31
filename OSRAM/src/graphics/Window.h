@@ -11,6 +11,8 @@
 #include "../utils/imGUI/imgui_impl_glfw_gl3.h"
 #include "MVP.h"
 
+#define OSRAM_VERSION 1.0v
+
 namespace OSRAM {
 	namespace GRAPHICS {
 
@@ -37,7 +39,6 @@ namespace OSRAM {
 			Window* getWindowInstance() { return INSTANCE; };
 
 			void RenderImGUI();
-
 		private:
 			void init();
 		};

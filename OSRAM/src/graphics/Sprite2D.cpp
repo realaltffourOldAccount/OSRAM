@@ -7,11 +7,6 @@ namespace OSRAM {
 	namespace GRAPHICS {
 		Sprite2D::Sprite2D(DATA data, Shaders *shader)
 		{
-			m_Model[0].x = 1.0f;
-			m_Model[1].y = 1.0f;
-			m_Model[2].z = 1.0f;
-			/*m_Model[2].w = 1.0f;*/
-
 			m_Data = data;
 			m_Shader = shader;
 		

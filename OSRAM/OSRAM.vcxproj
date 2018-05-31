@@ -73,6 +73,7 @@
     <IncludePath>$(SolutionDIR)deps\OpenGL\include;$(IncludePath);$(SolutionDIR)deps\OpenAL\include;$(SolutionDIR)deps\SoLoud\include</IncludePath>
     <LibraryPath>$(SolutionDIR)deps\OpenGL\lib;$(LibraryPath);$(SolutionDIR)deps\OpenAL\libs\Win32;$(SolutioinDIR)deps\SoLoud\libs</LibraryPath>
     <OutDir>$(SolutionDir)\bin\$(Configuration)\</OutDir>
+    <LinkIncremental>true</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <IncludePath>$(SolutionDIR)deps\OpenGL\include;$(IncludePath);$(SolutionDIR)deps\OpenAL\include;$(SolutionDIR)deps\SoLoud\include</IncludePath>
@@ -101,6 +102,7 @@
     <Link>
       <AdditionalDependencies>glew32.lib;glfw3.lib;glfw3dll.lib;opengl32.lib;OpenAL32.lib;alut.lib;libmodplug_x86.lib;soloud_x86.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(SolutionDIR)deps\OpenAL\libs\Win32;$(SolutionDIR)deps\SoLoud\libs;$(SolutionDIR)deps\OpenGL\libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <Version>1.0</Version>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -148,6 +150,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="example\PingPong_example.cpp" />
+    <ClCompile Include="src\graphics\Sprite2DTex.cpp" />
     <ClCompile Include="src\graphics\BasicRenderer2D.cpp" />
     <ClCompile Include="src\graphics\MVP.cpp" />
     <ClCompile Include="src\graphics\buffer\IBO.cpp" />
@@ -166,6 +169,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="example\PingPong_example.h" />
+    <ClInclude Include="src\graphics\Sprite2DTex.h" />
     <ClInclude Include="src\graphics\BasicRenderer2D.h" />
     <ClInclude Include="src\graphics\Renderable2D.h" />
     <ClInclude Include="src\graphics\MVP.h" />

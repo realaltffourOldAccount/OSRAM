@@ -342,10 +342,10 @@ void PingPong::init()
 	m_Ball->SetSpeedPosY(2.0f);
 	m_Ball->SetSpeedNegX(-1.0f);
 	m_Ball->SetSpeedNegY(-2.0f);
-	//m_Ball->SetChangerSpeedPosY(0.5f);
-	//m_Ball->SetChangerSpeedNegY(-0.5f);
-	//m_Ball->SetChangerSpeedPosX(0.05f);
-	//m_Ball->SetChangerSpeedNegX(-0.5f);
+	//m_Ball->SetChangerSpeedPosY(0.05f);
+	//m_Ball->SetChangerSpeedNegY(-0.05f);
+	//m_Ball->SetChangerSpeedPosX(0.0005f);
+	//m_Ball->SetChangerSpeedNegX(-0.0005f);
 
 	m_Paddle->EnableProgressiveAcc(true);
 	m_Paddle->SetSpeedPosX(0.5f);

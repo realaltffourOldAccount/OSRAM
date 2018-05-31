@@ -14,15 +14,17 @@ namespace OSRAM {
 				glm::vec2 _size;
 				glm::vec4 _color[4];
 			};
-			// FOR BATCHED SPRITE2D
-			struct VertexData
+			
+			// Sprite2DTex
+			struct DATA_Tex
 			{
-				glm::vec2 _position;
-				glm::vec4 _color;
-				glm::mat4 _M;
-				glm::mat4 _V;
-				glm::mat4 _P;
+				glm::vec2 _center;
+				glm::vec2 _size;
+				glm::vec4 _color[4];
+				glm::vec2 _texCord[4];
+				std::string _texturePATH;
 			};
+
 
 			void EnableProgressiveAcc(bool state) { m_Acc_True = state; };
 			void SetSpeedPosX(float speed) { m_AccSpeedPosX = speed; };
@@ -76,7 +78,7 @@ namespace OSRAM {
 				if (enabled)
 				{
 					if (m_Acc_True)
-						m_AccSpeedNegX += m_AccSpeedChangerNegX;
+						m_AccSpeedNegX -= m_AccSpeedChangerNegX;
 					m_Acc_x += m_AccSpeedNegX;
 				}
 				else {
@@ -106,6 +108,7 @@ namespace OSRAM {
 
 			float* GetVertices() { return m_Vertices; };
 			float* GetColors() { return m_Colors; }
+			float* GetTexCord() { return m_TexCoord; }
 			//float* GetBuffer() { return m_Buffer; }
 
 			virtual void LegacyDraw() = 0;
@@ -128,6 +131,7 @@ namespace OSRAM {
 
 			float m_Vertices[4*2];
 			float m_Colors[4*4];
+			float m_TexCoord[4*2];
 		};
 	}
 }
