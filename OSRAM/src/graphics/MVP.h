@@ -23,6 +23,10 @@ namespace OSRAM {
 			void SetBatchViewMatrix(glm::mat4 view);
 			void SetBatchProjectionMatrix(glm::mat4 proj);
 
+			void SetTextureModelMatrix(glm::mat4 model);
+			void SetTextureViewMatrix(glm::mat4 view);
+			void SetTextureProjectionMatrix(glm::mat4 proj);
+
 		private:
 			Shaders *m_Shader;
 		};

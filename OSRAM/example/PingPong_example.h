@@ -2,7 +2,7 @@
 
 #include "..\src\graphics\Window.h"
 #include "..\src\graphics\Sprite2D.h"
-#include "..\src\graphics\BasicRenderer2D.h"
+#include "..\src\graphics\Renderers\BasicRenderer2D.h"
 #include "..\src\graphics\MVP.h"
 #include "..\src\graphics\Shaders.h"
 #include "..\src\input\Input.h"
@@ -18,10 +18,10 @@ class PingPong
 private:
 	enum STATE
 	{
-		START = 0,RESUMED = 1, PAUSE = 2,
+		START = 0, RESUMED = 1, PAUSE = 2,
 		GAME_OVER_WIN = 3, GAME_OVER_LOSE = 4
 	};
-	GRAPHICS::Window m_Window = GRAPHICS::Window(760,560,"PingPong_Example 1.0v");
+	GRAPHICS::Window m_Window = GRAPHICS::Window(760,560,"PingPong_Example | OSRAM  V1.0");
 	INPUT::Input m_Input = INPUT::Input(m_Window.getWindowHandler(), GLFW_CURSOR_NORMAL);
 	GRAPHICS::Shaders m_Shaders = GRAPHICS::Shaders();
 	GRAPHICS::MVP m_MVP = GRAPHICS::MVP(&m_Shaders);
@@ -53,7 +53,7 @@ private:
 	bool m_BallCollidePaddle1 = false;
 	bool m_BallCollidePaddle2 = false;
 
-	bool m_BallGoingLeft = false;
+	bool m_BallGoingLeft = true;
 	bool m_BallGoingUp = true;
 
 	void CheckPaddleColisionBorders();

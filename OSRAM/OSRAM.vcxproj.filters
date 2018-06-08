@@ -39,9 +39,6 @@
     <ClCompile Include="src\graphics\Sprite2D.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\utils\stbi_image.h">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\utils\imGUI\imgui.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -57,13 +54,22 @@
     <ClCompile Include="src\graphics\MVP.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\graphics\BasicRenderer2D.cpp">
+    <ClCompile Include="src\graphics\Sprite2DTex.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\utils\stb_image_read.h">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="example\PingPong_example.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\graphics\Sprite2DTex.cpp">
+    <ClCompile Include="example\Platformer_example\Platformer2D.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\graphics\Renderers\BasicRenderer2D.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\graphics\Renderers\VectorRenderer2D.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -113,22 +119,31 @@
     <ClInclude Include="src\graphics\MVP.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\graphics\Renderable2D.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\graphics\Render2D.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\graphics\Sprite2D.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\graphics\BasicRenderer2D.h">
+    <ClInclude Include="src\graphics\Sprite2DTex.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\utils\stb_image_write.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="example\PingPong_example.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\graphics\Sprite2DTex.h">
+    <ClInclude Include="example\Platformer_example\Platformer2D.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\graphics\Renderers\BasicRenderer2D.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\graphics\Renderers\Renderable2D.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\graphics\Renderers\Render2D.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\graphics\Renderers\VectorRenderer2D.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,4 +1,4 @@
-#version 430 core
+#version 330 core
 
 layout (location = 0) in vec4 position;
 layout (location = 1) in vec4 m_Color;
@@ -14,6 +14,6 @@ out vec2 TexCord;
 void main()
 {
 	gl_Position = (m_P * m_V * m_M) * position;
-	Color = m_Color;
+	//Color = m_Color;
 	TexCord = texCord;
 }

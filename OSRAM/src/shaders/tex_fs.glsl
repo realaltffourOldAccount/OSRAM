@@ -1,4 +1,4 @@
-#version 430 core
+#version 330 core
 
 in vec4 Color;
 in vec2 TexCord;
@@ -9,5 +9,5 @@ uniform sampler2D Texture;
 
 void main()
 {
-	f_color = texture(Texture, TexCord) * Color;
+	f_color = Color * texture(Texture, TexCord);
 }

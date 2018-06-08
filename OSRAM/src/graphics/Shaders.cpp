@@ -153,80 +153,80 @@ OSRAM::GRAPHICS::Shaders::Shaders()
 		std::cout << "[SHADER:LINK:BATCH] Failed to Link Program : " << message << std::endl;
 	}
 
-	//// Texture GLSL Program
-	//m_texFS_Source = read_file("src//shaders//tex_fs.glsl");
-	//m_texVS_Source = read_file("src//shaders//tex_vs.glsl");
+	// Texture GLSL Program
+	m_texFS_Source = read_file("src\\shaders\\tex_fs.glsl");
+	m_texVS_Source = read_file("src\\shaders\\tex_vs.glsl");
 
-	//const char* tex_vsrc = m_texVS_Source.c_str();
-	//const char* tex_fsrc = m_texFS_Source.c_str();
+	const char* tex_vsrc = m_texVS_Source.c_str();
+	const char* tex_fsrc = m_texFS_Source.c_str();
 
-	//m_texFS = glCreateShader(GL_FRAGMENT_SHADER);
-	//m_texVS = glCreateShader(GL_VERTEX_SHADER);
+	m_texFS = glCreateShader(GL_FRAGMENT_SHADER);
+	m_texVS = glCreateShader(GL_VERTEX_SHADER);
 
-	//glShaderSource(m_texFS, 1, &tex_fsrc, 0);
-	//glShaderSource(m_texVS, 1, &tex_vsrc, 0);
+	glShaderSource(m_texFS, 1, &tex_fsrc, 0);
+	glShaderSource(m_texVS, 1, &tex_vsrc, 0);
 
-	//glCompileShader(m_texFS);
-	//GLint tex_vertex_compiled;
-	//glGetShaderiv(m_texFS, GL_COMPILE_STATUS, &tex_vertex_compiled);
-	//if (tex_vertex_compiled != GL_TRUE)
-	//{
-	//	GLsizei log_length = 0;
-	//	GLchar message[1024];
-	//	glGetShaderInfoLog(m_texVS, 1024, &log_length, message);
+	glCompileShader(m_texFS);
+	GLint tex_vertex_compiled;
+	glGetShaderiv(m_texFS, GL_COMPILE_STATUS, &tex_vertex_compiled);
+	if (tex_vertex_compiled != GL_TRUE)
+	{
+		GLsizei log_length = 0;
+		GLchar message[1024];
+		glGetShaderInfoLog(m_texVS, 1024, &log_length, message);
 
-	//	std::cout << "[SHADER:VS] Could Not Compile, Error Message: \n" << message << std::endl;
-	//	return;
-	//}
-	//else
-	//{
-	//	std::cout << "[SHADER:VS] Shader Createion . . . SUCCESS" << std::endl;
-	//}
+		std::cout << "[SHADER:VS:TEX] Could Not Compile, Error Message: \n" << message << std::endl;
+		return;
+	}
+	else
+	{
+		std::cout << "[SHADER:VS:TEX] Shader Creation . . . SUCCESS" << std::endl;
+	}
 
-	//glCompileShader(m_texVS);
-	//GLint tex_frag_compiled;
-	//glGetShaderiv(m_texFS, GL_COMPILE_STATUS, &tex_frag_compiled);
-	//if (tex_frag_compiled != GL_TRUE)
-	//{
-	//	GLsizei log_length = 0;
-	//	GLchar message[1024];
-	//	glGetShaderInfoLog(m_texVS, 1024, &log_length, message);
+	glCompileShader(m_texVS);
+	GLint tex_frag_compiled;
+	glGetShaderiv(m_texFS, GL_COMPILE_STATUS, &tex_frag_compiled);
+	if (tex_frag_compiled != GL_TRUE)
+	{
+		GLsizei log_length = 0;
+		GLchar message[1024];
+		glGetShaderInfoLog(m_texVS, 1024, &log_length, message);
 
-	//	std::cout << "[SHADER:FS] Could Not Compile, Error Message: \n" << message << std::endl;
-	//	return;
-	//}
-	//else
-	//{
-	//	std::cout << "[SHADER:VS] Shader Creation . . . SUCCESS" << std::endl;
-	//}
+		std::cout << "[SHADER:FS:TEX] Could Not Compile, Error Message: \n" << message << std::endl;
+		return;
+	}
+	else
+	{
+		std::cout << "[SHADER:VS:TEX] Shader Creation . . . SUCCESS" << std::endl;
+	}
 
-	//m_TextureProgram = glCreateProgram();
-	//glAttachShader(m_TextureProgram, m_texVS);
-	//glAttachShader(m_TextureProgram, m_texFS);
-	//glLinkProgram(m_TextureProgram);
-	//GLint texlinked;
-	//glGetProgramiv(m_TextureProgram, GL_LINK_STATUS, &texlinked);
-	//if (texlinked != GL_FALSE)
-	//{
-	//	// ok
-	//	std::cout << "[SHADERS:LINK] Link Status . . . SUCCESS" << std::endl;
-	//}
-	//else
-	//{
-	//	GLint maxLength = 0;
-	//	glGetProgramiv(m_BasicProgram, GL_INFO_LOG_LENGTH, &maxLength);
+	m_TextureProgram = glCreateProgram();
+	glAttachShader(m_TextureProgram, m_texVS);
+	glAttachShader(m_TextureProgram, m_texFS);
+	glLinkProgram(m_TextureProgram);
+	GLint texlinked;
+	glGetProgramiv(m_TextureProgram, GL_LINK_STATUS, &texlinked);
+	if (texlinked != GL_FALSE)
+	{
+		// ok
+		std::cout << "[SHADERS:LINK:TEX] Link Status . . . SUCCESS" << std::endl;
+	}
+	else
+	{
+		GLint maxLength = 0;
+		glGetProgramiv(m_TextureProgram, GL_INFO_LOG_LENGTH, &maxLength);
 
-	//	GLchar message[1024];
-	//	glGetProgramInfoLog(m_BasicProgram, maxLength, &maxLength, &message[0]);
+		GLchar message[1024];
+		glGetProgramInfoLog(m_TextureProgram, maxLength, &maxLength, &message[0]);
 
-	//	// We don't need the program anymore.
-	//	glDeleteProgram(m_BasicProgram);
-	//	// Don't leak shaders either.
-	//	glDeleteShader(m_basicVS);
-	//	glDeleteShader(m_basicFS);
+		// We don't need the program anymore.
+		glDeleteProgram(m_TextureProgram);
+		// Don't leak shaders either.
+		glDeleteShader(m_texVS);
+		glDeleteShader(m_texFS);
 
-	//	std::cout << "[SHADER:LINK] Failed to Link Program : " << message << std::endl;
-	//}
+		std::cout << "[SHADER:LINK:TEX] Failed to Link Program : " << message << std::endl;
+	}
 }
 
 OSRAM::GRAPHICS::Shaders::~Shaders()

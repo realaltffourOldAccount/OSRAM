@@ -1,9 +1,9 @@
 #pragma once
-#include "buffer/VAO.h"
-#include "buffer/IBO.h"
+#include "buffer\VAO.h"
+#include "buffer\IBO.h"
 #include "Shaders.h"
 #include "Window.h"
-#include "Renderable2D.h"
+#include "Renderers\Renderable2D.h"
 
 #include <GLM/glm.hpp>
 #include <iostream>
@@ -11,7 +11,7 @@
 using namespace OSRAM::GRAPHICS::BUFFER;
 namespace OSRAM {
 	namespace GRAPHICS {
-		class Sprite2D : public Renderable2D
+		class Sprite2D : public RENDERERS::Renderable2D
 		{
 		public:
 			Sprite2D(DATA data, Shaders *shader);

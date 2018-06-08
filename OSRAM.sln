@@ -3,20 +3,30 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26228.9
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OSRAM", "OSRAM\OSRAM.vcxproj", "{8901576E-0ED0-4215-AA86-7634A31D72B8}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OSRAM-desktop", "OSRAM\OSRAM.vcxproj", "{8901576E-0ED0-4215-AA86-7634A31D72B8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "osram-desktop", "osram-desktop", "{7D689B35-C4D7-43D4-B46E-0A4C36CFA0EE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|ARM = Debug|ARM
+		Debug|ARM64 = Debug|ARM64
 		Debug|x64 = Debug|x64
 		Debug|x86 = Debug|x86
+		Release|ARM = Release|ARM
+		Release|ARM64 = Release|ARM64
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8901576E-0ED0-4215-AA86-7634A31D72B8}.Debug|ARM.ActiveCfg = Debug|Win32
+		{8901576E-0ED0-4215-AA86-7634A31D72B8}.Debug|ARM64.ActiveCfg = Debug|Win32
 		{8901576E-0ED0-4215-AA86-7634A31D72B8}.Debug|x64.ActiveCfg = Debug|x64
 		{8901576E-0ED0-4215-AA86-7634A31D72B8}.Debug|x64.Build.0 = Debug|x64
 		{8901576E-0ED0-4215-AA86-7634A31D72B8}.Debug|x86.ActiveCfg = Debug|Win32
 		{8901576E-0ED0-4215-AA86-7634A31D72B8}.Debug|x86.Build.0 = Debug|Win32
+		{8901576E-0ED0-4215-AA86-7634A31D72B8}.Release|ARM.ActiveCfg = Release|Win32
+		{8901576E-0ED0-4215-AA86-7634A31D72B8}.Release|ARM64.ActiveCfg = Release|Win32
 		{8901576E-0ED0-4215-AA86-7634A31D72B8}.Release|x64.ActiveCfg = Release|x64
 		{8901576E-0ED0-4215-AA86-7634A31D72B8}.Release|x64.Build.0 = Release|x64
 		{8901576E-0ED0-4215-AA86-7634A31D72B8}.Release|x86.ActiveCfg = Release|Win32
@@ -24,5 +34,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{8901576E-0ED0-4215-AA86-7634A31D72B8} = {7D689B35-C4D7-43D4-B46E-0A4C36CFA0EE}
 	EndGlobalSection
 EndGlobal

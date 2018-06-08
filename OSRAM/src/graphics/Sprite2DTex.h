@@ -1,11 +1,10 @@
 #pragma once
 #include <GL\glew.h>
-#include "Renderable2D.h"
-#include "..\utils\stbi_image.h"
+#include "Renderers\Renderable2D.h"
 
 namespace OSRAM {
 	namespace GRAPHICS {
-		class Sprite2DTex : Renderable2D 
+		class Sprite2DTex : public RENDERERS::Renderable2D
 		{
 		private:
 			GLuint m_TextureID;
@@ -13,12 +12,17 @@ namespace OSRAM {
 			GLuint m_IndicesBuff;
 			GLuint m_VertexArray;
 
-			float *m_Buffer;
-			GLubyte ind[6] = { 0,1,2, 2, 1, 3 };
+			GLubyte ind[6] = { 0, 1, 3, 1, 2, 3 };
 
 			DATA_Tex _TexSpec;
 
 			void init();
+
+			// Texture Info
+			int t_Width;
+			int t_Hieght;
+			int t_nrChannels;
+			unsigned char *t_data;
 		public:
 			Sprite2DTex(DATA_Tex data);
 			~Sprite2DTex();

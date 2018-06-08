@@ -1,7 +1,5 @@
+#pragma once
 #include "Sprite2D.h"
-
-#define STB_IMAGE_IMPLEMENTATION
-#include "../utils/stbi_image.h"
 
 namespace OSRAM {
 	namespace GRAPHICS {

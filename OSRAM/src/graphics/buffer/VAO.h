@@ -37,7 +37,7 @@ namespace OSRAM {
 					buffer_texCord_data_info* _texCord_layout;
 				};
 			public:
-				VAO(BUFFER::VBO vbo, buffer_layout *layout, bool texture);
+				VAO(OSRAM::GRAPHICS::BUFFER::VBO vbo, buffer_layout *layout, bool texture);
 				~VAO();
 				void LegacyDrawBuffer();
 
@@ -47,8 +47,8 @@ namespace OSRAM {
 			private:
 				OSRAM::GRAPHICS::BUFFER::VBO* m_VBO;
 				buffer_layout m_Layout;
+				bool m_TextureEnabled;
 				GLuint m_VAOid;
-				bool m_TextureEnabled = false;
 			};
 		}
 	}

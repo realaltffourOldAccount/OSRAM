@@ -23,6 +23,7 @@
     <ProjectGuid>{8901576E-0ED0-4215-AA86-7634A31D72B8}</ProjectGuid>
     <RootNamespace>OSRAM</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.14393.0</WindowsTargetPlatformVersion>
+    <ProjectName>OSRAM-desktop</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -100,7 +101,7 @@
       <PreprocessorDefinitions>_MBCS;WITH_WINMM;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>glew32.lib;glfw3.lib;glfw3dll.lib;opengl32.lib;OpenAL32.lib;alut.lib;libmodplug_x86.lib;soloud_x86.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>glew32s.lib;glfw3.lib;glfw3dll.lib;opengl32.lib;OpenAL32.lib;alut.lib;libmodplug_x86.lib;soloud_x86.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(SolutionDIR)deps\OpenAL\libs\Win32;$(SolutionDIR)deps\SoLoud\libs;$(SolutionDIR)deps\OpenGL\libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <Version>1.0</Version>
     </Link>
@@ -130,7 +131,7 @@
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>glew32.lib;glfw3.lib;glfw3dll.lib;opengl32.lib;OpenAL32.lib;alut.lib;libmodplug_x86.lib;soloud_x86.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>glew32s.lib;glfw3.lib;glfw3dll.lib;opengl32.lib;OpenAL32.lib;alut.lib;libmodplug_x86.lib;soloud_x86.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(SolutionDIR)deps\OpenAL\libs\Win32;$(SolutionDIR)deps\SoLoud\libs;$(SolutionDIR)deps\OpenGL\libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
@@ -150,8 +151,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="example\PingPong_example.cpp" />
+    <ClCompile Include="example\Platformer_example\Platformer2D.cpp" />
     <ClCompile Include="src\graphics\Sprite2DTex.cpp" />
-    <ClCompile Include="src\graphics\BasicRenderer2D.cpp" />
+    <ClCompile Include="src\graphics\Renderers\BasicRenderer2D.cpp" />
     <ClCompile Include="src\graphics\MVP.cpp" />
     <ClCompile Include="src\graphics\buffer\IBO.cpp" />
     <ClCompile Include="src\graphics\Shaders.cpp" />
@@ -165,20 +167,22 @@
     <ClCompile Include="src\utils\imGUI\imgui_demo.cpp" />
     <ClCompile Include="src\utils\imGUI\imgui_draw.cpp" />
     <ClCompile Include="src\utils\imGUI\imgui_impl_glfw_gl3.cpp" />
-    <ClCompile Include="src\utils\stbi_image.h" />
+    <ClCompile Include="src\utils\stb_image_read.h" />
+    <ClCompile Include="src\graphics\Renderers\VectorRenderer2D.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="example\PingPong_example.h" />
+    <ClInclude Include="example\Platformer_example\Platformer2D.h" />
     <ClInclude Include="src\graphics\Sprite2DTex.h" />
-    <ClInclude Include="src\graphics\BasicRenderer2D.h" />
-    <ClInclude Include="src\graphics\Renderable2D.h" />
+    <ClInclude Include="src\graphics\Renderers\BasicRenderer2D.h" />
+    <ClInclude Include="src\graphics\Renderers\Renderable2D.h" />
     <ClInclude Include="src\graphics\MVP.h" />
     <ClInclude Include="src\graphics\Sprite2D.h" />
     <ClInclude Include="src\graphics\buffer\IBO.h" />
     <ClInclude Include="src\graphics\Shaders.h" />
     <ClInclude Include="src\input\Input.h" />
     <ClInclude Include="src\graphics\Window.h" />
-    <ClInclude Include="src\graphics\Render2D.h" />
+    <ClInclude Include="src\graphics\Renderers\Render2D.h" />
     <ClInclude Include="src\utils\fileutils.h" />
     <ClInclude Include="src\graphics\buffer\VBO.h" />
     <ClInclude Include="src\graphics\buffer\VAO.h" />
@@ -189,6 +193,8 @@
     <ClInclude Include="src\utils\imGUI\stb_rect_pack.h" />
     <ClInclude Include="src\utils\imGUI\stb_textedit.h" />
     <ClInclude Include="src\utils\imGUI\stb_truetype.h" />
+    <ClInclude Include="src\utils\stb_image_write.h" />
+    <ClInclude Include="src\graphics\Renderers\VectorRenderer2D.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="src\shaders\basic_fs.glsl" />

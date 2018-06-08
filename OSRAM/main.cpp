@@ -1,19 +1,24 @@
-#include "src/graphics/Window.h"
-#include "src/input/Input.h"
-#include "src/graphics/Shaders.h"
-#include "src/graphics/buffer/VBO.h"
-#include "src/graphics/buffer/IBO.h"
-#include "src/graphics/buffer/VAO.h"
-#include "src/graphics/Sprite2D.h"
-#include "src/graphics/MVP.h"
-#include "src/graphics/BasicRenderer2D.h"
+#include "src\graphics\Window.h"
+#include "src\input\Input.h"
+#include "src\graphics\Shaders.h"
+#include "src\graphics\buffer\VBO.h"
+#include "src\graphics\buffer\IBO.h"
+#include "src\graphics\buffer\VAO.h"
+#include "src\graphics\Sprite2D.h"
+#include "src\graphics\Sprite2DTex.h"
+#include "src\graphics\MVP.h"
+#include "src\graphics\Renderers\VectorRenderer2D.h"
 
-#include <GLM/gtc/matrix_transform.hpp>
-#include <GLM/mat4x4.hpp>
+
+#include <GLM\gtc\matrix_transform.hpp>
+#include <GLM\mat4x4.hpp>
 #include <iostream>
 
 //#define OSRAM_TEST 0
-#define OSRAM_PINGPONG 1
+//#define OSRAM_PINGPONG 1
+#define OSRAM_PLATFORMER 2
+//#define OSRAM_PLAYGROUND 3
+//#define OSRAM_PLAYGROUND2 4
 
 #ifdef OSRAM_TEST
 
@@ -69,28 +74,23 @@ int main()
 	glm::mat4 view(1.0f);
 	//view = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, -0.4f, 0.3f));
 	//view = glm::rotate(glm::mat4(1.0f), glm::radians(25.0f), glm::vec3(0.0f, 0.0f, 1.0f));
-	proj = glm::ortho(0.0f, (float)(760 / 2), 0.0f, (float)(560 / 2), -1.0f, 1.0f);
-	shader.UseBasicProgram();
-	mvp.SetBasicProjectionMatrix(proj);
-	mvp.SetBasicViewMatrix(view);
+	proj = glm::ortho(0.0f, (float)(760), 0.0f, (float)(560), -1.0f, 1.0f);
+	OSRAM::GRAPHICS::RENDERERS::Renderable2D::DATA_Tex data;
+	data._center.x = 760 / 2;
+	data._center.y = 560 / 2;
+	data._size.x = 100;
+	data._size.y = 100;
+	data._color[0] = glm::vec4(1.0f, 1.0f, 1.0f, 1.0f);
+	data._color[1] = glm::vec4(1.0f, 1.0f, 1.0f, 1.0f);
+	data._color[2] = glm::vec4(1.0f, 1.0f, 1.0f, 1.0f);
+	data._color[3] = glm::vec4(1.0f, 1.0f, 1.0f, 1.0f);
+	data._texCord[0] = glm::vec2(1.0f, 1.0f);
+	data._texCord[1] = glm::vec2(1.0f, 0.0f);
+	data._texCord[2] = glm::vec2(0.0f, 0.0f);
+	data._texCord[3] = glm::vec2(0.0f, 1.0f);
+	data._texturePATH = "container.jpg";
+	OSRAM::GRAPHICS::Sprite2DTex tex(data);
 
-	OSRAM::GRAPHICS::Sprite2D::DATA data;
-	data._center = glm::vec2(50.0f, 50.0f);
-	data._size = glm::vec2(10.0f, 10.0f);
-	data._color[0] = glm::vec4(1.0f, 0.0f, 0.0f, 0.5f);
-	data._color[1] = glm::vec4(0.0f, 1.0f, 0.0f, 0.5f);
-	data._color[2] = glm::vec4(0.0f, 0.0f, 1.0f, 0.5f);
-	data._color[3] = glm::vec4(0.5f, 0.5f, 0.0f, 0.5f);
-	OSRAM::GRAPHICS::Sprite2D sprite(data, &shader);
-
-	OSRAM::GRAPHICS::Sprite2D::DATA data2;
-	data2._center = glm::vec2(60.4f, 50.4f);
-	data2._size = glm::vec2(5.0f, 5.2f);
-	data2._color[0] = glm::vec4(1.0f, 0.0f, 0.0f, 0.5f);
-	data2._color[1] = glm::vec4(0.0f, 1.0f, 0.0f, 0.5f);
-	data2._color[2] = glm::vec4(0.0f, 0.0f, 1.0f, 0.5f);
-	data2._color[3] = glm::vec4(0.5f, 0.5f, 0.0f, 0.5f);
-	OSRAM::GRAPHICS::Sprite2D sprite2(data2, &shader);
 
 	//OSRAM::GRAPHICS::BasicRenderer2D basic_renderer2d(&mvp);
 	//	OSRAM::GRAPHICS::BatchRenderer2D batch_renderer2d(proj, view, &mvp);
@@ -100,51 +100,62 @@ int main()
 		//shader.Uniform4f(shader.GetBasicProgram(),"m_Color", 0.2f, 0.3f, 0.5f, 1.0f);
 		//glClearColor(0.03f, 0.0f, 0.0f, 1.0f);
 
-	sprite.EnableProgressiveAcc(true);
-	sprite.SetChangerSpeedPosY(0.5f);
-	sprite.SetChangerSpeedNegY(-0.5f);
-	sprite.SetChangerSpeedPosX(0.5f);
-	sprite.SetChangerSpeedNegX(-0.5f);
-	sprite.SetSpeedPosY(0.5f);
-	sprite.SetSpeedPosX(0.5f);
-	sprite.SetSpeedNegX(0.5f);
-	sprite.SetSpeedNegY(0.5f);
+	tex.SetChangerSpeedPosY(0.5f);
+	tex.SetChangerSpeedNegY(-0.5f);
+	tex.SetChangerSpeedPosX(0.5f);
+	tex.SetChangerSpeedNegX(-0.5f);
+	tex.SetSpeedPosY(0.5f);
+	tex.SetSpeedPosX(0.5f);
+	tex.SetSpeedNegX(-0.5f);
+	tex.SetSpeedNegY(-0.5f);
 
-	//sprite.accelerateX(true);
+	//shader.UseBasicProgram();
+	shader.UseTextureProgram();
+	mvp.SetTextureProjectionMatrix(proj);
+	mvp.SetTextureViewMatrix(view);
+
+	OSRAM::GRAPHICS::RENDERERS::VectorRenderer2D renderV(&mvp);
+	renderV.setProjection(proj);
+	renderV.add(&tex, "test");
 	while (!glfwWindowShouldClose(window.getWindowHandler()))
 	{
 		window.Update();
 
 		if (input.isKeyPressed(GLFW_KEY_W) == true)
 		{
-			sprite.accelerateY(true);
+			tex.moveYAccelerated();
+			//tex.moveY();
 		}
 		if (input.isKeyPressed(GLFW_KEY_S) == true)
 		{
-			sprite.accelerateNegY(true);
+			tex.moveNegYAccelerated();
+			//tex.moveNegY();
 		}
 		if (input.isKeyPressed(GLFW_KEY_D) == true)
 		{
-			sprite.accelerateX(true);
+			tex.moveXAccelerated();
+			//tex.moveX();
 		}
 		if (input.isKeyPressed(GLFW_KEY_A) == true)
 		{
-			sprite.accelerateNegX(true);
+			tex.moveNegXAccelerated();
+			//tex.moveNegX();
 		}
 		else if (input.isKeyPressed(GLFW_KEY_W) == false && input.isKeyPressed(GLFW_KEY_S) == false
 			&& input.isKeyPressed(GLFW_KEY_D) == false && input.isKeyPressed(GLFW_KEY_A) == false)
 		{
-			sprite.ResetSpeedPosX();
-			sprite.ResetSpeedPosY();
-			sprite.ResetSpeedNegX();
-			sprite.ResetSpeedNegY();
+			tex.ResetSpeedPosX();
+			tex.ResetSpeedPosY();
+			tex.ResetSpeedNegX();
+			tex.ResetSpeedNegY();
 		}
 
-		shader.UseBasicProgram();
 		//basic_renderer2d.submit(&sprite);
 		//glm::mat4 temp = glm::mat4(1.0f);
-		mvp.SetBasicModelMatrix(sprite.GetModelMatrix());
-		sprite.LegacyDraw();
+		//mvp.SetTextureModelMatrix(tex.GetModelMatrix());
+		//tex.LegacyDraw();
+	//	renderV.setModelMatrix("test", tex.GetModelMatrix());
+		renderV.flush();
 		//basic_renderer2d.flush(proj, view, sprite.GetModelMatrix());
 
 		window.RenderImGUI();
@@ -152,11 +163,10 @@ int main()
 	return 0;
 }
 #endif // OSRAM_TEST
+#ifdef OSRAM_PINGPONG
 
 #define GLEW_STATIC
 #include "example\PingPong_example.h"
-#ifdef OSRAM_PINGPONG
-
 
 int main()
 {
@@ -168,3 +178,156 @@ int main()
 }
 
 #endif // OSRAM_PINGPONG
+
+#ifdef OSRAM_PLATFORMER
+
+#include "example\Platformer_example\Platformer2D.h"
+
+int main()
+{
+	Platformer2D game;
+	game.Run();
+	return 0;
+}
+
+#endif // OSRAM_PLATFORMER
+
+
+#ifdef OSRAM_PLAYGROUND 
+#include "src\graphics\buffer\VBO.h"
+#include "src\graphics\buffer\IBO.h"
+#include "src\graphics\buffer\VAO.h"
+
+#include "src\utils\stb_image_read.h"
+
+int main()
+{
+	OSRAM::GRAPHICS::Window window(800, 600, "PLAYGROUND");
+	OSRAM::GRAPHICS::Shaders shaders;
+	OSRAM::GRAPHICS::MVP mvp(&shaders);
+	shaders.UseTextureProgram();
+
+	float vertices[] = {
+		// positions          // colors           // texture coords
+		 0.5f,  0.5f, 0.0f,   1.0f, 1.0f, 1.0f,   1.0f, 1.0f, // top right
+		 0.5f, -0.5f, 0.0f,   1.0f, 1.0f, 1.0f,   1.0f, 0.0f, // bottom right
+		-0.5f, -0.5f, 0.0f,   1.0f, 1.0f, 1.0f,   0.0f, 0.0f, // bottom left
+		-0.5f,  0.5f, 0.0f,   1.0f, 1.0f, 1.0f,   0.0f, 1.0f  // top left 
+	};
+
+	float vertices1[] = {
+		 // positions        // texture coords
+		 0.5f,  0.5f, 0.0f, 1.0f, 1.0f, // top right
+		 0.5f, -0.5f, 0.0f, 1.0f, 0.0f, // bottom right
+		-0.5f, -0.5f, 0.0f, 0.0f, 0.0f, // bottom left
+		-0.5f,  0.5f, 0.0f, 0.0f, 1.0f  // top left 
+	};
+
+	GLubyte ind[] = {
+		0, 1, 3, // first triangle
+		1, 2, 3  // second triangle
+	};
+	GLuint vao;
+	OSRAM::GRAPHICS::BUFFER::VBO vbo(vertices, 8 * 4);
+	OSRAM::GRAPHICS::BUFFER::IBO ibo(ind, 6);
+	vbo.Bind();
+	glGenVertexArrays(1, &vao);
+	glBindVertexArray(vao);
+	// position attribute
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
+	glEnableVertexAttribArray(0);
+	// color attribute
+	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float)));
+	glEnableVertexAttribArray(1);
+	// texture coord attribute
+	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
+	glEnableVertexAttribArray(2);
+
+	GLuint texture;
+	std::string buffer;
+
+	glGenTextures(1, &texture);
+	if (!texture)
+		std::cout << "Could not create texture. . . " << std::endl;
+
+	glBindTexture(GL_TEXTURE_2D, texture);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+	
+	int width, height, nrChannels;
+	stbi_set_flip_vertically_on_load(true);
+	unsigned char* image = stbi_load("container.jpg", &width, &height, &nrChannels, 0);
+	//unsigned char* image = SOIL_load_image("test.png", &width, &height, (int)SOIL_LOAD_AUTO, SOIL_LOAD_RGB);
+	
+	if (!image)
+	{
+		std::cout << "Could Not read texture" << std::endl;
+	}
+
+	float pixels[] = {
+		0.0f, 0.0f, 0.0f,   1.0f, 1.0f, 1.0f,
+		1.0f, 1.0f, 1.0f,   0.0f, 0.0f, 0.0f
+	};
+
+	window.CheckError();
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, image);
+	//glClearColor(0.5f, 0.5f, 0.5f, 1.0f);
+	while (glfwWindowShouldClose(window.getWindowHandler()) == false)
+	{
+		window.Update();
+
+		vbo.Bind();
+		ibo.Bind();
+		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_BYTE, 0);
+		window.CheckError();
+
+		window.RenderImGUI();
+	}
+}
+
+#endif // OSRAM_PLAYGROUND 2
+
+#ifdef OSRAM_PLAYGROUND2
+
+#include "src\graphics\Window.h"
+#include "src\graphics\Shaders.h"
+#include "src\graphics\MVP.h"
+#include "src\graphics\Sprite2DTex.h"
+
+int main()
+{
+	OSRAM::GRAPHICS::Window window(800, 600, "PLAYGROUND");
+	OSRAM::GRAPHICS::Shaders shaders;
+	OSRAM::GRAPHICS::MVP mvp(&shaders);
+
+	OSRAM::GRAPHICS::Renderable2D::DATA_Tex data;
+	data._center.x = 0.0f;
+	data._center.y = 0.0f;
+	data._size.x = 0.5f + (0.5f / 2);
+	data._size.y = 0.5f + (0.5f / 2);
+	data._color[0] = glm::vec4(1.0f, 1.0f, 1.0f, 1.0f);
+	data._color[1] = glm::vec4(1.0f, 1.0f, 1.0f, 1.0f);
+	data._color[2] = glm::vec4(1.0f, 1.0f, 1.0f, 1.0f);
+	data._color[3] = glm::vec4(1.0f, 1.0f, 1.0f, 1.0f);
+	data._texCord[0] = glm::vec2(1.0f, 1.0f);
+	data._texCord[1] = glm::vec2(1.0f, 0.0f);
+	data._texCord[2] = glm::vec2(0.0f, 0.0f);
+	data._texCord[3] = glm::vec2(0.0f, 1.0f);
+	data._texturePATH = "container.jpg";
+	OSRAM::GRAPHICS::Sprite2DTex tex(data);
+
+	shaders.UseTextureProgram();
+
+	while (!glfwWindowShouldClose(window.getWindowHandler()))
+	{
+		window.Update();
+
+		tex.LegacyDraw();
+
+		window.RenderImGUI();
+	}
+}
+
+#endif // OSRAM_PLAYGROUND 2

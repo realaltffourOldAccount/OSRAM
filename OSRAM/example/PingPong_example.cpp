@@ -198,7 +198,7 @@ void PingPong::UpdatePaddle()
 	{
 		if (up_collide != true)
 		{
-			m_Paddle->accelerateY(true);
+			m_Paddle->moveYAccelerated();
 		}
 	}
 	else if (m_Input.isKeyPressed(GLFW_KEY_W) == false && m_Input.isKeyPressed(GLFW_KEY_S) == false
@@ -210,7 +210,7 @@ void PingPong::UpdatePaddle()
 	{
 		if (down_collide != true)
 		{
-			m_Paddle->accelerateNegY(true);
+			m_Paddle->moveNegYAccelerated();
 		}
 	}
 	else if (m_Input.isKeyPressed(GLFW_KEY_S) == false && m_Input.isKeyPressed(GLFW_KEY_W) == false
@@ -243,9 +243,9 @@ void PingPong::UpdateCompPaddle()
 		float temp_paddleYRangeDOWN = temp_compPaddlePoint.y - (m_CompPaddleLayout._size.y / 2);
 
 		if (temp_ballPoint.y > temp_paddleYRangeUP)
-			m_CompPaddle->accelerateY(true);
+			m_CompPaddle->moveYAccelerated();
 		else if (temp_ballPoint.y < temp_paddleYRangeDOWN)
-			m_CompPaddle->accelerateNegY(true);
+			m_CompPaddle->moveNegYAccelerated();
 	}
 	else
 	{
@@ -282,20 +282,20 @@ void PingPong::UpdateBall()
 
 	if (m_BallGoingLeft == true)
 	{
-		m_Ball->accelerateNegX(true);
+		m_Ball->moveNegX();
 	}
 	else if (m_BallGoingLeft == false)
 	{
-		m_Ball->accelerateX(true);
+		m_Ball->moveX();
 	}
 
 	if (m_BallGoingUp == true)
 	{
-		m_Ball->accelerateY(true);
+		m_Ball->moveY();
 	}
 	else if (m_BallGoingUp == false)
 	{
-		m_Ball->accelerateNegY(true);
+		m_Ball->moveNegY();
 	}
 }
 
@@ -337,7 +337,6 @@ void PingPong::init()
 	m_BallLayout._color[3] = glm::vec4(0.0f, 0.0f, 1.0f, 1.0f);
 	m_Ball = new GRAPHICS::Sprite2D(m_BallLayout, &m_Shaders);
 
-	m_Ball->EnableProgressiveAcc(true);
 	m_Ball->SetSpeedPosX(1.0f);
 	m_Ball->SetSpeedPosY(2.0f);
 	m_Ball->SetSpeedNegX(-1.0f);
@@ -347,7 +346,6 @@ void PingPong::init()
 	//m_Ball->SetChangerSpeedPosX(0.0005f);
 	//m_Ball->SetChangerSpeedNegX(-0.0005f);
 
-	m_Paddle->EnableProgressiveAcc(true);
 	m_Paddle->SetSpeedPosX(0.5f);
 	m_Paddle->SetSpeedPosY(0.5f);
 	m_Paddle->SetSpeedNegX(0.5f);
@@ -356,7 +354,6 @@ void PingPong::init()
 	m_Paddle->SetChangerSpeedPosY(0.5f);
 	m_Paddle->SetChangerSpeedNegY(-0.5f);
 
-	m_CompPaddle->EnableProgressiveAcc(true);
 	m_CompPaddle->SetSpeedPosX(0.5f);
 	m_CompPaddle->SetSpeedPosY(0.5f);
 	m_CompPaddle->SetSpeedNegX(0.5f);
