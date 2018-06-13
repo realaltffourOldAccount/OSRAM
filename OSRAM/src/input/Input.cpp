@@ -1,7 +1,7 @@
 #include "Input.h"
 
 OSRAM::INPUT::Input *input;
-OSRAM::INPUT::Input::Input(GLFWwindow* window, int cursor)
+OSRAM::INPUT::Input::Input(OSRAM::GRAPHICS::Window* window, int cursor)
 {
 	input = this;
 	for (int i = 0; i < 1024; i++)
@@ -14,14 +14,14 @@ OSRAM::INPUT::Input::Input(GLFWwindow* window, int cursor)
 	}
 	m_MouseEnter = false;
 
-	glfwSetKeyCallback(window, key_callback);
-	glfwSetCursorPosCallback(window, cursor_position_callback);
-	glfwSetMouseButtonCallback(window, mouse_button_callback);
-	glfwSetCursorEnterCallback(window, cursor_enter_callback);
+	glfwSetKeyCallback(window->getWindowHandler(), key_callback);
+	glfwSetCursorPosCallback(window->getWindowHandler(), cursor_position_callback);
+	glfwSetMouseButtonCallback(window->getWindowHandler(), mouse_button_callback);
+	glfwSetCursorEnterCallback(window->getWindowHandler(), cursor_enter_callback);
 
 	inited = true;
-	glfwSetInputMode(window, GLFW_CURSOR, cursor);
-	std::cout << "[INPUT] Input Class . . . SUCCESS" << std::endl;
+	glfwSetInputMode(window->getWindowHandler(), GLFW_CURSOR, cursor);
+	window->getLog()->LogMSG(window->getLog()->MSG_NORMAL, window->getLog()->_prefix._Input, "Input Class . . . SUCCESS");
 }
 
 OSRAM::INPUT::Input::~Input()

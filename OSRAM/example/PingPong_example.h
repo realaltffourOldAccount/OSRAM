@@ -1,10 +1,10 @@
 #pragma once
 
-#include "..\src\graphics\Window.h"
-#include "..\src\graphics\Sprite2D.h"
-#include "..\src\graphics\Renderers\BasicRenderer2D.h"
-#include "..\src\graphics\MVP.h"
-#include "..\src\graphics\Shaders.h"
+#include "..\src\graphics\graphics-core\Window.h"
+#include "..\src\graphics\core-2D\Sprite2D.h"
+#include "..\src\graphics\core-2D\Renderers\BasicRenderer2D.h"
+#include "..\src\graphics\graphics-core\MVP.h"
+#include "..\src\graphics\graphics-core\Shaders.h"
 #include "..\src\input\Input.h"
 
 
@@ -22,8 +22,8 @@ private:
 		GAME_OVER_WIN = 3, GAME_OVER_LOSE = 4
 	};
 	GRAPHICS::Window m_Window = GRAPHICS::Window(760,560,"PingPong_Example | OSRAM  V1.0");
-	INPUT::Input m_Input = INPUT::Input(m_Window.getWindowHandler(), GLFW_CURSOR_NORMAL);
-	GRAPHICS::Shaders m_Shaders = GRAPHICS::Shaders();
+	INPUT::Input m_Input = INPUT::Input(&m_Window, GLFW_CURSOR_NORMAL);
+	GRAPHICS::Shaders m_Shaders = GRAPHICS::Shaders(&m_Window);
 	GRAPHICS::MVP m_MVP = GRAPHICS::MVP(&m_Shaders);
 	
 	GRAPHICS::Sprite2D *m_Paddle;

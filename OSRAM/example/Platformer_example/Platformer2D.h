@@ -1,10 +1,10 @@
 #pragma once
 
-#include "..\..\src\graphics\Window.h"
-#include "..\..\src\graphics\Shaders.h"
-#include "..\..\src\graphics\MVP.h"
+#include "..\..\src\graphics\graphics-core\Window.h"
+#include "..\..\src\graphics\graphics-core\Shaders.h"
+#include "..\..\src\graphics\graphics-core\MVP.h"
 #include "..\..\src\input\Input.h"
-#include "..\..\src\graphics\Sprite2DTex.h"
+#include "..\..\src\graphics\core-2D\Sprite2DTex.h"
 #include <GLM/gtc/matrix_transform.hpp>
 #include <GLM/mat4x4.hpp>
 #include <vector>

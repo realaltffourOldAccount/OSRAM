@@ -1,14 +1,12 @@
-#include "src\graphics\Window.h"
+#include "src\graphics\graphics-core\Window.h"
 #include "src\input\Input.h"
-#include "src\graphics\Shaders.h"
-#include "src\graphics\buffer\VBO.h"
-#include "src\graphics\buffer\IBO.h"
-#include "src\graphics\buffer\VAO.h"
-#include "src\graphics\Sprite2D.h"
-#include "src\graphics\Sprite2DTex.h"
-#include "src\graphics\MVP.h"
-#include "src\graphics\Renderers\VectorRenderer2D.h"
-
+#include "src\graphics\graphics-core\Shaders.h"
+#include "src\graphics\graphics-core\buffer\VBO.h"
+#include "src\graphics\graphics-core\buffer\IBO.h"
+#include "src\graphics\graphics-core\buffer\VAO.h"
+#include "src\graphics\graphics-core\MVP.h"
+#include "src\graphics\core-2D\Sprite2DTex.h"
+#include "src\graphics\core-2D\renderers\VectorRenderer2D.h"
 
 #include <GLM\gtc\matrix_transform.hpp>
 #include <GLM\mat4x4.hpp>
@@ -16,9 +14,12 @@
 
 //#define OSRAM_TEST 0
 //#define OSRAM_PINGPONG 1
-#define OSRAM_PLATFORMER 2
+//#define OSRAM_PLATFORMER 2
 //#define OSRAM_PLAYGROUND 3
 //#define OSRAM_PLAYGROUND2 4
+#define OSRAM_AUDIO_TEST 5
+//#define OSRAM_LOG_TEST 6
+//#define OSRAM_OPGL_INTERMIDIATE 7
 
 #ifdef OSRAM_TEST
 
@@ -52,6 +53,55 @@ void draw_vbo()
 	glDeleteBuffers(1, &ibo);
 }
 
+void draw_cube()
+{
+	glBegin(GL_QUADS); // of the color cube
+
+					   // Top-face
+	glColor3f(0.0f, 1.0f, 0.0f); // green
+	glVertex3f(1.0f, 1.0f, -1.0f);
+	glVertex3f(-1.0f, 1.0f, -1.0f);
+	glVertex3f(-1.0f, 1.0f, 1.0f);
+	glVertex3f(1.0f, 1.0f, 1.0f);
+
+	// Bottom-face
+	glColor3f(1.0f, 0.5f, 0.0f); // orange
+	glVertex3f(1.0f, -1.0f, 1.0f);
+	glVertex3f(-1.0f, -1.0f, 1.0f);
+	glVertex3f(-1.0f, -1.0f, -1.0f);
+	glVertex3f(1.0f, -1.0f, -1.0f);
+
+	// Front-face
+	glColor3f(1.0f, 0.0f, 0.0f); // red
+	glVertex3f(1.0f, 1.0f, 1.0f);
+	glVertex3f(-1.0f, 1.0f, 1.0f);
+	glVertex3f(-1.0f, -1.0f, 1.0f);
+	glVertex3f(1.0f, -1.0f, 1.0f);
+
+	// Back-face
+	glColor3f(1.0f, 1.0f, 0.0f); // yellow
+	glVertex3f(1.0f, -1.0f, -1.0f);
+	glVertex3f(-1.0f, -1.0f, -1.0f);
+	glVertex3f(-1.0f, 1.0f, -1.0f);
+	glVertex3f(1.0f, 1.0f, -1.0f);
+
+	// Left-face
+	glColor3f(0.0f, 0.0f, 1.0f); // blue
+	glVertex3f(-1.0f, 1.0f, 1.0f);
+	glVertex3f(-1.0f, 1.0f, -1.0f);
+	glVertex3f(-1.0f, -1.0f, -1.0f);
+	glVertex3f(-1.0f, -1.0f, 1.0f);
+
+	// Right-face
+	glColor3f(1.0f, 0.0f, 1.0f); // magenta
+	glVertex3f(1.0f, 1.0f, -1.0f);
+	glVertex3f(1.0f, 1.0f, 1.0f);
+	glVertex3f(1.0f, -1.0f, 1.0f);
+	glVertex3f(1.0f, -1.0f, -1.0f);
+
+	glEnd(); // of the color cube
+}
+
 int main()
 {
 	GLfloat vert[8] = {
@@ -63,8 +113,9 @@ int main()
 	GLubyte ind[6] = { 0,1,2, 3,1,2 };
 
 	OSRAM::GRAPHICS::Window window(760, 560, "Default Title");
-	OSRAM::INPUT::Input input(window.getWindowHandler(), GLFW_CURSOR_NORMAL);
-	OSRAM::GRAPHICS::Shaders shader;
+	OSRAM::INPUT::Input input(&window, GLFW_CURSOR_NORMAL);
+	OSRAM::GRAPHICS::Shaders shader(&window);	
+
 	OSRAM::GRAPHICS::MVP mvp(&shader);
 	//OSRAM::GRAPHICS::BUFFER::VBO vbo(vert, 8, 2);
 	//OSRAM::GRAPHICS::BUFFER::IBO ibo(ind, 6);
@@ -89,7 +140,7 @@ int main()
 	data._texCord[2] = glm::vec2(0.0f, 0.0f);
 	data._texCord[3] = glm::vec2(0.0f, 1.0f);
 	data._texturePATH = "container.jpg";
-	OSRAM::GRAPHICS::Sprite2DTex tex(data);
+	OSRAM::GRAPHICS::Sprite2DTex tex(data, &window);
 
 
 	//OSRAM::GRAPHICS::BasicRenderer2D basic_renderer2d(&mvp);
@@ -155,8 +206,9 @@ int main()
 		//mvp.SetTextureModelMatrix(tex.GetModelMatrix());
 		//tex.LegacyDraw();
 	//	renderV.setModelMatrix("test", tex.GetModelMatrix());
-		renderV.flush();
+		renderV.flush(view, proj);
 		//basic_renderer2d.flush(proj, view, sprite.GetModelMatrix());
+
 
 		window.RenderImGUI();
 	}
@@ -331,3 +383,139 @@ int main()
 }
 
 #endif // OSRAM_PLAYGROUND 2
+
+#ifdef OSRAM_AUDIO_TEST
+#include <iostream>
+#include "src\audio\AudioManager.h"
+
+int main()
+{
+	OSRAM::AUDIO::AudioManager audio;
+	OSRAM::AUDIO::AudioManager::ListenerDATA ldata;
+	OSRAM::AUDIO::AudioManager::BufferObject bdata;
+	OSRAM::AUDIO::AudioManager::AudioObject adata;
+
+	bdata._PATH = "canary.wav";
+	bdata._name = "test";
+	bdata._loop = (ALboolean)AL_TRUE;
+
+	adata._bindedBuffer = &bdata;
+	adata._name = "test1";
+	adata._looping = (ALboolean)AL_TRUE;
+	adata._pitch = 1;
+	adata._gain = 1;
+	adata._pos = glm::vec3(0, 0, 0);
+	adata._velocity = glm::vec3(0);
+
+	ldata._ori[0] =  0.0f;
+	ldata._ori[1] =  0.0f;
+	ldata._ori[2] =  1.0f;
+	ldata._ori[3] =  0.0f;
+	ldata._ori[4] =  1.0f;
+	ldata._ori[5] =  0.0f;
+	ldata._pos = glm::vec3(0.0f,0.0f,1.0f);
+	ldata._velocity = glm::vec3(0.0f, 0.0f, 0.0f);
+
+	audio.SetListener(ldata);
+	audio.AddBufferObject(bdata);
+	audio.AddAudioObject(adata);
+	audio.SetBufferOBJForAudioOBJ("test1", "test");
+	audio.PlayAudioOBJ("test1");
+	while (true)
+	{
+		audio.Update();
+	}
+
+}
+#endif // OSRAM_AUDIO_TEST
+
+#ifdef OSRAM_LOG_TEST
+
+#include "src\utils\Log.h"
+
+using namespace OSRAM::UTILS;
+
+int main()
+{
+	Log log;
+
+	log.LogMSG(log.MSG_NORMAL, log._prefix._WINDOW, "Hello World");
+
+	log.FlushToFile();
+
+	while (true);
+
+	return 0;
+}
+
+#endif // OSRAM_LOG_TEST
+
+
+#ifdef OSRAM_OPGL_INTERMIDIATE
+
+
+void draw_cube()
+{
+	glBegin(GL_QUADS); // of the color cube
+
+					   // Top-face
+	glColor3f(0.0f, 1.0f, 0.0f); // green
+	glVertex3f(1.0f, 1.0f, -1.0f);
+	glVertex3f(-1.0f, 1.0f, -1.0f);
+	glVertex3f(-1.0f, 1.0f, 1.0f);
+	glVertex3f(1.0f, 1.0f, 1.0f);
+
+	// Bottom-face
+	glColor3f(1.0f, 0.5f, 0.0f); // orange
+	glVertex3f(1.0f, -1.0f, 1.0f);
+	glVertex3f(-1.0f, -1.0f, 1.0f);
+	glVertex3f(-1.0f, -1.0f, -1.0f);
+	glVertex3f(1.0f, -1.0f, -1.0f);
+
+	// Front-face
+	glColor3f(1.0f, 0.0f, 0.0f); // red
+	glVertex3f(1.0f, 1.0f, 1.0f);
+	glVertex3f(-1.0f, 1.0f, 1.0f);
+	glVertex3f(-1.0f, -1.0f, 1.0f);
+	glVertex3f(1.0f, -1.0f, 1.0f);
+
+	// Back-face
+	glColor3f(1.0f, 1.0f, 0.0f); // yellow
+	glVertex3f(1.0f, -1.0f, -1.0f);
+	glVertex3f(-1.0f, -1.0f, -1.0f);
+	glVertex3f(-1.0f, 1.0f, -1.0f);
+	glVertex3f(1.0f, 1.0f, -1.0f);
+
+	// Left-face
+	glColor3f(0.0f, 0.0f, 1.0f); // blue
+	glVertex3f(-1.0f, 1.0f, 1.0f);
+	glVertex3f(-1.0f, 1.0f, -1.0f);
+	glVertex3f(-1.0f, -1.0f, -1.0f);
+	glVertex3f(-1.0f, -1.0f, 1.0f);
+
+	// Right-face
+	glColor3f(1.0f, 0.0f, 1.0f); // magenta
+	glVertex3f(1.0f, 1.0f, -1.0f);
+	glVertex3f(1.0f, 1.0f, 1.0f);
+	glVertex3f(1.0f, -1.0f, 1.0f);
+	glVertex3f(1.0f, -1.0f, -1.0f);
+
+	glEnd(); // of the color cube
+}
+
+int main()
+{
+	OSRAM::GRAPHICS::Window window(760, 560, "Default Title");
+	OSRAM::INPUT::Input input(&window, GLFW_CURSOR_NORMAL);
+	
+	while (!glfwWindowShouldClose(window.getWindowHandler()))
+	{
+		window.Update();
+
+		
+		draw_cube();
+
+		window.RenderImGUI();
+	}
+	return 0;
+#endif // OSRAM_OPGL_INTERMDIATE

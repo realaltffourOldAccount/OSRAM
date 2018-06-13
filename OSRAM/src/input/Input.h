@@ -1,5 +1,5 @@
 #pragma once
-#include "../graphics/Window.h"
+#include "..\graphics\graphics-core\Window.h"
 
 namespace OSRAM
 {
@@ -16,7 +16,7 @@ namespace OSRAM
 
 			bool inited = false;
 		public:
-			Input(GLFWwindow* window, int cursor_mode);
+			Input(OSRAM::GRAPHICS::Window* window, int cursor_mode);
 			~Input();
 
 			bool isKeyPressed(int key) { return m_keys[key]; }

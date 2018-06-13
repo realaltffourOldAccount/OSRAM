@@ -99,12 +99,16 @@
       <AdditionalIncludeDirectories>$(SolutionDIR)deps\OpenGL\include;$(SolutionDIR)deps\OpenAL\include;$(SolutioinDIR)deps\SoLoud\include</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4996</DisableSpecificWarnings>
       <PreprocessorDefinitions>_MBCS;WITH_WINMM;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <BrowseInformation>true</BrowseInformation>
     </ClCompile>
     <Link>
       <AdditionalDependencies>glew32s.lib;glfw3.lib;glfw3dll.lib;opengl32.lib;OpenAL32.lib;alut.lib;libmodplug_x86.lib;soloud_x86.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(SolutionDIR)deps\OpenAL\libs\Win32;$(SolutionDIR)deps\SoLoud\libs;$(SolutionDIR)deps\OpenGL\libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <Version>1.0</Version>
     </Link>
+    <Bscmake>
+      <PreserveSbr>true</PreserveSbr>
+    </Bscmake>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -131,7 +135,7 @@
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>glew32s.lib;glfw3.lib;glfw3dll.lib;opengl32.lib;OpenAL32.lib;alut.lib;libmodplug_x86.lib;soloud_x86.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>glew32s.lib;glfw3.lib;glfw3dll.lib;opengl32.lib;OpenAL32.lib;alut.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(SolutionDIR)deps\OpenAL\libs\Win32;$(SolutionDIR)deps\SoLoud\libs;$(SolutionDIR)deps\OpenGL\libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
@@ -150,42 +154,54 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\graphics\graphics-core\Shaders_ADV.cpp" />
+    <ClCompile Include="src\graphics\core-3D\Cube3D.cpp" />
+    <ClCompile Include="src\graphics\layers\Layer2D.cpp" />
+    <ClCompile Include="src\utils\Log.cpp" />
+    <ClCompile Include="src\audio\AudioManager.cpp" />
     <ClCompile Include="example\PingPong_example.cpp" />
     <ClCompile Include="example\Platformer_example\Platformer2D.cpp" />
-    <ClCompile Include="src\graphics\Sprite2DTex.cpp" />
-    <ClCompile Include="src\graphics\Renderers\BasicRenderer2D.cpp" />
-    <ClCompile Include="src\graphics\MVP.cpp" />
-    <ClCompile Include="src\graphics\buffer\IBO.cpp" />
-    <ClCompile Include="src\graphics\Shaders.cpp" />
-    <ClCompile Include="src\graphics\Sprite2D.cpp" />
+    <ClCompile Include="src\graphics\core-2D\Sprite2DTex.cpp" />
+    <ClCompile Include="src\graphics\core-2D\renderers\BasicRenderer2D.cpp" />
+    <ClCompile Include="src\graphics\graphics-core\MVP.cpp" />
+    <ClCompile Include="src\graphics\graphics-core\buffer\IBO.cpp" />
+    <ClCompile Include="src\graphics\graphics-core\Shaders.cpp" />
+    <ClCompile Include="src\graphics\core-2D\Sprite2D.cpp" />
     <ClCompile Include="src\input\Input.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="src\graphics\Window.cpp" />
-    <ClCompile Include="src\graphics\buffer\VBO.cpp" />
-    <ClCompile Include="src\graphics\buffer\VAO.cpp" />
+    <ClCompile Include="src\graphics\graphics-core\Window.cpp" />
+    <ClCompile Include="src\graphics\graphics-core\buffer\VBO.cpp" />
+    <ClCompile Include="src\graphics\graphics-core\buffer\VAO.cpp" />
     <ClCompile Include="src\utils\imGUI\imgui.cpp" />
     <ClCompile Include="src\utils\imGUI\imgui_demo.cpp" />
     <ClCompile Include="src\utils\imGUI\imgui_draw.cpp" />
     <ClCompile Include="src\utils\imGUI\imgui_impl_glfw_gl3.cpp" />
     <ClCompile Include="src\utils\stb_image_read.h" />
-    <ClCompile Include="src\graphics\Renderers\VectorRenderer2D.cpp" />
+    <ClCompile Include="src\graphics\core-2D\renderers\VectorRenderer2D.cpp" />
+    <ClCompile Include="src\utils\Timer.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\graphics\graphics-core\Shaders_ADV.h" />
+    <ClInclude Include="src\graphics\core-3D\Cube3D.h" />
+    <ClInclude Include="src\graphics\layers\Layer2D.h" />
+    <ClInclude Include="src\OSRAM.h" />
+    <ClInclude Include="src\utils\Log.h" />
+    <ClInclude Include="src\audio\AudioManager.h" />
     <ClInclude Include="example\PingPong_example.h" />
     <ClInclude Include="example\Platformer_example\Platformer2D.h" />
-    <ClInclude Include="src\graphics\Sprite2DTex.h" />
-    <ClInclude Include="src\graphics\Renderers\BasicRenderer2D.h" />
-    <ClInclude Include="src\graphics\Renderers\Renderable2D.h" />
-    <ClInclude Include="src\graphics\MVP.h" />
-    <ClInclude Include="src\graphics\Sprite2D.h" />
-    <ClInclude Include="src\graphics\buffer\IBO.h" />
-    <ClInclude Include="src\graphics\Shaders.h" />
+    <ClInclude Include="src\graphics\core-2D\Sprite2DTex.h" />
+    <ClInclude Include="src\graphics\core-2D\renderers\BasicRenderer2D.h" />
+    <ClInclude Include="src\graphics\core-2D\renderers\Renderable2D.h" />
+    <ClInclude Include="src\graphics\graphics-core\MVP.h" />
+    <ClInclude Include="src\graphics\core-2D\Sprite2D.h" />
+    <ClInclude Include="src\graphics\graphics-core\buffer\IBO.h" />
+    <ClInclude Include="src\graphics\graphics-core\Shaders.h" />
     <ClInclude Include="src\input\Input.h" />
-    <ClInclude Include="src\graphics\Window.h" />
-    <ClInclude Include="src\graphics\Renderers\Render2D.h" />
+    <ClInclude Include="src\graphics\graphics-core\Window.h" />
+    <ClInclude Include="src\graphics\core-2D\renderers\Render2D.h" />
     <ClInclude Include="src\utils\fileutils.h" />
-    <ClInclude Include="src\graphics\buffer\VBO.h" />
-    <ClInclude Include="src\graphics\buffer\VAO.h" />
+    <ClInclude Include="src\graphics\graphics-core\buffer\VBO.h" />
+    <ClInclude Include="src\graphics\graphics-core\buffer\VAO.h" />
     <ClInclude Include="src\utils\imGUI\imconfig.h" />
     <ClInclude Include="src\utils\imGUI\imgui.h" />
     <ClInclude Include="src\utils\imGUI\imgui_impl_glfw_gl3.h" />
@@ -194,7 +210,7 @@
     <ClInclude Include="src\utils\imGUI\stb_textedit.h" />
     <ClInclude Include="src\utils\imGUI\stb_truetype.h" />
     <ClInclude Include="src\utils\stb_image_write.h" />
-    <ClInclude Include="src\graphics\Renderers\VectorRenderer2D.h" />
+    <ClInclude Include="src\graphics\core-2D\renderers\VectorRenderer2D.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="src\shaders\basic_fs.glsl" />

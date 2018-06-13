@@ -3,7 +3,7 @@
 #include <iostream>
 #include <fstream>
 
-namespace OSRAM	{
+namespace OSRAM {
 	namespace UTILS {
 		inline std::string read_file(std::string filename)
 		{
@@ -29,5 +29,27 @@ namespace OSRAM	{
 				std::cout << "[FILE] File Reading: " + filename << " . . . FAIL" << std::endl;
 			return nullptr;
 		}
-	}
+
+		inline void write_file(std::string filename, std::string data, bool clearfile)
+		{
+			std::cout << "[FILE] Writing File: " << filename << std::endl;
+
+			std::ofstream write(filename);
+
+			if (clearfile)
+				write.clear(0);
+
+			if (write.is_open())
+			{
+				write << data;
+				write.close();
+
+				std::cout << "[FILE] File Writing: " + filename << " . . . SUCCESS" << std::endl;
+			}
+			else
+			{
+				std::cout << "[FILE] File Writing: " + filename << " . . . FAIL" << std::endl;
+			}
+		}
+	};
 }
