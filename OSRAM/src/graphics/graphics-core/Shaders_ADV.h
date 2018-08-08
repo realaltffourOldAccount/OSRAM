@@ -8,6 +8,7 @@
 #include "..\..\utils\fileutils.h"
 
 #include <vector>
+#include <map>
 
 namespace OSRAM
 {
@@ -18,26 +19,23 @@ namespace OSRAM
 		private:
 			struct ProgDATA
 			{
-				std::string _name;
-
 				GLuint _program;
 				GLuint _vertexShaders;
 				GLuint _fragmentShader;
 				
-				std::string _vsSource;
-				std::string _fsSource;
+				std::string _vsPath;
+				std::string _fsPath;
 			};
 
-			std::vector<ProgDATA> m_Progs;
-
+			 std::map<std::string, ProgDATA> m_Progs;
+			 Window *win;
 		public:
-			Shaders_ADV();
+			Shaders_ADV(Window *win);
 			~Shaders_ADV();
 
 			void AddProgram(std::string name, std::string VSpath, std::string FSpath);
 			void Remove(std::string name);
 			void BindProgram(std::string name);
-
 		};
 	}
 }

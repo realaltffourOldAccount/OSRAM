@@ -244,7 +244,6 @@ int main()
 
 #endif // OSRAM_PLATFORMER
 
-
 #ifdef OSRAM_PLAYGROUND 
 #include "src\graphics\buffer\VBO.h"
 #include "src\graphics\buffer\IBO.h"
