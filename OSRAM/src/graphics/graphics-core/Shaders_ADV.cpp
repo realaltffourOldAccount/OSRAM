@@ -15,7 +15,7 @@ void OSRAM::GRAPHICS::Shaders_ADV::AddProgram(std::string name, std::string VSpa
 	ProgDATA data;
 	data._vsPath = VSpath;
 	data._fsPath = FSpath;
-	
+
 	std::string src_vs = UTILS::read_file(VSpath);
 	std::string src_fs = UTILS::read_file(FSpath);
 
@@ -96,10 +96,10 @@ void OSRAM::GRAPHICS::Shaders_ADV::AddProgram(std::string name, std::string VSpa
 
 void OSRAM::GRAPHICS::Shaders_ADV::Remove(std::string name)
 {
-
+	m_Progs.erase(name);
 }
 
 void OSRAM::GRAPHICS::Shaders_ADV::BindProgram(std::string name)
 {
-
+	glLinkProgram(m_Progs.at(name)._program);
 }
